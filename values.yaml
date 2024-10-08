@@ -35,15 +35,14 @@ thirdparty:
   fastsms_api:
       id: Ob0rxjvg6qkgAKMztEjMKeKPHF9O7dTgTPJtRvb4cKqrWEWvOUqpoSDpmUmw
       url: https://www.fast2sms.com/dev/bulkV2?authorization=
-    
-
+  
 
 database:
   postgres:
     name: postgres-service
     image: postgres:13
     username: postgres
-    passwordSecret: taytelar # Fetch password from AWS Secrets Manager
+    password: taytelar 
     dbname: Tay-Telar
     host: postgres-service
     port: 5432

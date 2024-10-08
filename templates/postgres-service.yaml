@@ -5,7 +5,7 @@ metadata:
 spec:
   ports:
   - protocol: TCP
-    port: {{ .Values.postgres.port }}
+    port: {{ .Values.database.postgres.port }}
     targetPort: 5432  # Ensure this matches the container port in the Deployment
   type: ClusterIP
   selector:

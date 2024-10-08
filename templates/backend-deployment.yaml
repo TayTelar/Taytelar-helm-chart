@@ -12,7 +12,6 @@ spec:
       labels:
         app: backend
     spec:
-      serviceAccountName: taytelar-service-account
       imagePullSecrets:
         - name: ecr-secret  # Proper image pull secret to access ECR
 
@@ -26,7 +25,7 @@ spec:
           env:
             # PostgreSQL values
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://postgres-service:5432/{{ .Values.database.postgres.dbname }}
+              value: jdbc:postgresql://{{ .Values.database.postgres.name }}:5432/{{ .Values.database.postgres.dbname }}
               
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
@@ -42,7 +41,7 @@ spec:
 
             # MongoDB values
             - name: SPRING_DATA_MONGODB_URI
-              value: mongodb://mongo-service:27017/{{ .Values.database.mongodb.dbname }}
+              value: mongodb://{{ .Values.database.mongodb.name }}:27017/{{ .Values.database.mongodb.dbname }}
 
             # Razorpay Credentials
             - name: RAZORPAY_API_KEY
