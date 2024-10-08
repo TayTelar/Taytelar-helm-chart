@@ -24,7 +24,7 @@ env:
     region: ap-south-1
     access_key: test
     secret_key: test
-    buckeName: product-images-2024
+    bucketName: product-images-2024
   
 
 thirdparty:
