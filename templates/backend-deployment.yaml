@@ -98,15 +98,3 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: {{ .Values.backend.service.port }}
-            initialDelaySeconds: 5
-            periodSeconds: 10
-          livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: {{ .Values.backend.service.port }}
-            initialDelaySeconds: 15
-            periodSeconds: 20
