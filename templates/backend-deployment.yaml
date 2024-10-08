@@ -88,6 +88,9 @@ spec:
                   name: backend-secrets
                   key: aws-bucket-name
 
+            - name: AWS_REGION
+              value: ap-south-1
+
           resources:
             requests:
               memory: "256Mi"
