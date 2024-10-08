@@ -1,0 +1,69 @@
+replicaCount: 1
+
+frontend:
+  image:
+    repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/taytelar-frontend
+    tag: latest
+  service:
+    type: LoadBalancer
+    port: 80
+    targetPort: 80
+
+backend:
+  image:
+    repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/taytelar-backend
+    tag: latest
+  service:
+    type: ClusterIP
+    port: 8081
+    targetPort: 8081
+  pullPolicy: IfNotPresent
+
+env:
+  aws:
+    region: ap-south-1
+    access_key: test
+    secret_key: test
+    buckeName: product-images-2024
+  
+
+thirdparty:
+  razopay-api:
+      id: rzp_test_nHgaZ8pP0SqyOm
+      secret: y02XoqnCoIJbVHHvPGKcQPCd
+
+  fastsms-api:
+      id: Ob0rxjvg6qkgAKMztEjMKeKPHF9O7dTgTPJtRvb4cKqrWEWvOUqpoSDpmUmw
+      url: https://www.fast2sms.com/dev/bulkV2?authorization=
+    
+
+
+database:
+  postgres:
+    name: postgres-service
+    image: postgres:13
+    username: postgres
+    passwordSecret: taytelar # Fetch password from AWS Secrets Manager
+    dbname: Tay-Telar
+    host: postgres-service
+    port: 5432
+    targetPort: 5432
+    replicaCount: 1
+    enabled: true
+    storage:
+        size: 1Gi
+
+  mongodb:
+    name: mongo-service
+    image: mongo:latest
+    dbname: TayTelar
+    enabled: true
+    host: mongo-service
+    port: 27017
+    targetPort: 27017 
+    user: mongo_user
+    storage:
+        size: 1Gi
+
+
+

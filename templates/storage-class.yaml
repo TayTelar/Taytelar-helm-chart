@@ -1,0 +1,7 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: gp2  # or whatever name you choose
+provisioner: ebs.csi.aws.com  # Provisioner for EBS
+reclaimPolicy: Delete  # or Retain, depending on your needs
+volumeBindingMode: WaitForFirstConsumer  # Useful for dynamic provisioning

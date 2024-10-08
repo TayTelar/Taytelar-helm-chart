@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-mongo
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-mongo
+    spec:
+      containers:
+      - name: "{{ .Values.database.mongodb.name }}"
+        image: "{{ .Values.mongodb.image }}"  # Quoting the Helm variable
+        ports:
+        - containerPort: 27017

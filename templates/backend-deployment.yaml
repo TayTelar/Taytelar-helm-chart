@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      serviceAccountName: taytelar-service-account
+      imagePullSecrets:
+        - name: ecr-secret  # Proper image pull secret to access ECR
+
+      containers:
+        - name: backend
+          image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.backend.service.port }}
+
+          env:
+            # PostgreSQL values
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres-service:5432/{{ .Values.database.postgres.dbname }}
+              
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: postgres-username
+                  
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: postgres-password
+
+            # MongoDB values
+            - name: SPRING_DATA_MONGODB_URI
+              value: mongodb://mongo-service:27017/{{ .Values.database.mongodb.dbname }}
+
+            # Razorpay Credentials
+            - name: RAZORPAY_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: razorpay-api-key-id
+            - name: RAZORPAY_API_KEY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: razorpay-api-key-secret
+
+
+            # Fast2SMS Credentials
+            - name: FAST2SMS_CREDENTIALS
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: fast2sms-api-id
+            - name: FAST2SMS_SMS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: fast2sms-api-url
+
+
+            # AWS credentials and bucket
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: aws-access-key
+                  
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: aws-secret-key
+                  
+            - name: AWS_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: aws-bucket-name
+
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: {{ .Values.backend.service.port }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: {{ .Values.backend.service.port }}
+            initialDelaySeconds: 15
+            periodSeconds: 20

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.database.postgres.name }}
+spec:
+  ports:
+  - protocol: TCP
+    port: {{ .Values.postgres.port }}
+    targetPort: 5432  # Ensure this matches the container port in the Deployment
+  type: ClusterIP
+  selector:
+    app: {{ .Release.Name }}-postgres

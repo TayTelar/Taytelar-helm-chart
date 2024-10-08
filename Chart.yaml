@@ -1,0 +1,4 @@
+apiVersion: v2
+name: TayTelar
+description: A Helm chart for deploying an taytelar application
+version: 0.1.0
