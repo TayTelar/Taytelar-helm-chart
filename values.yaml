@@ -28,11 +28,11 @@ env:
   
 
 thirdparty:
-  razopay-api:
+  razopay_api:
       id: rzp_test_nHgaZ8pP0SqyOm
       secret: y02XoqnCoIJbVHHvPGKcQPCd
 
-  fastsms-api:
+  fastsms_api:
       id: Ob0rxjvg6qkgAKMztEjMKeKPHF9O7dTgTPJtRvb4cKqrWEWvOUqpoSDpmUmw
       url: https://www.fast2sms.com/dev/bulkV2?authorization=
     
