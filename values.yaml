@@ -14,7 +14,7 @@ backend:
     repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/taytelar-backend
     tag: latest
   service:
-    type: ClusterIP
+    type: LoadBalancer
     port: 8081
     targetPort: 8081
   pullPolicy: IfNotPresent
@@ -64,5 +64,32 @@ database:
     storage:
         size: 1Gi
 
+elasticsearch:
+  replicas: 1
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "500m"
 
+kibana:
+  replicas: 1
+  serviceType: LoadBalancer
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
 
+logstash:
+  enabled: true
+  replicas: 1
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "500m"
+
+filebeat:
+  resources:
+    requests:
+      memory: "200Mi"
+      cpu: "100m"
+  logPaths: ["/var/log", "/var/lib/docker/containers"]
