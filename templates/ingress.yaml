@@ -1,13 +1,15 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-
-  name: frontend-ingress
+  name: frontend-backend-ingress
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
-
 spec:
+  tls:
+    - hosts:
+        - taytelar.example.com
+
   rules:
     - host: taytelar.example.com
       http:
@@ -19,5 +21,10 @@ spec:
                 name: frontend
                 port:
                   number: {{ .Values.frontend.service.port }}
-
-
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: {{ .Values.backend.service.port }}
