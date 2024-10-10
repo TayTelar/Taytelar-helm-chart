@@ -63,26 +63,3 @@ database:
     user: mongo_user
     storage:
         size: 1Gi
-
-
-efk: 
-  namespace: efklog
-
-  elasticsearch:
-    image: "docker.elastic.co/elasticsearch/elasticsearch:7.3.2"
-    replicas: 2
-    servicePort: 9200
-  
-  fluentd:
-    image: "fluent/fluentd-kubernetes-daemonset:v1.14-debian-elasticsearch7"
-    resources:
-      limits:
-        memory: "500Mi"
-      requests:
-        cpu: "100m"
-        memory: "200Mi"
-  
-  kibana:
-    image: "docker.elastic.co/kibana/kibana-oss:7.3.2"
-    replicas: 1
-    servicePort: 5601
