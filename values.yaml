@@ -63,33 +63,3 @@ database:
     user: mongo_user
     storage:
         size: 1Gi
-
-elasticsearch:
-  replicas: 1
-  resources:
-    requests:
-      memory: "1Gi"
-      cpu: "500m"
-
-kibana:
-  replicas: 1
-  serviceType: LoadBalancer
-  resources:
-    requests:
-      memory: "512Mi"
-      cpu: "250m"
-
-logstash:
-  enabled: true
-  replicas: 1
-  resources:
-    requests:
-      memory: "512Mi"
-      cpu: "500m"
-
-filebeat:
-  resources:
-    requests:
-      memory: "200Mi"
-      cpu: "100m"
-  logPaths: ["/var/log", "/var/lib/docker/containers"]
