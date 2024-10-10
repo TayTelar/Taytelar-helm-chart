@@ -21,6 +21,15 @@ spec:
         env:
         - name: FLUENTD_ARGS
           value: --no-supervisor -q
+        - name: FLUENT_ELASTICSEARCH_HOST
+          value: "http://elasticsearch-logging" 
+        - name: FLUENT_ELASTICSEARCH_PORT
+          value: "9200"
+        - name: FLUENT_ELASTICSEARCH_LOGSTASH_PREFIX
+          value: "taytelar-logs"
+        - name: FLUENTD_SYSTEMD_CONF  
+          value: disable   
+
         resources:
           limits:
             memory: 500Mi
