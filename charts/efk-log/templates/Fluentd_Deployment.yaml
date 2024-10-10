@@ -32,4 +32,4 @@ subjects:
 roleRef:
   kind: ClusterRole
   name: fluentd-es
-  apiGroup: rbac.authorization.k8s.io  # Corrected line
+  apiGroup: rbac.authorization.k8s.io 

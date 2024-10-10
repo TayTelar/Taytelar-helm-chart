@@ -17,12 +17,12 @@ spec:
     spec:
       containers:
       - name: kibana-logging
-        image: docker.elastic.co/kibana/kibana-oss:7.3.2
+        image: {{ .Values.efk.kibana.image }}
         ports:
         - containerPort: 5601
         env:
           - name: ELASTICSEARCH_HOSTS
-            value: http://elasticsearch-logging.efklog.svc.cluster.local
+            value: http://elasticsearch-logging:9200
           - name: SERVER_NAME
             value: kibana-logging
           - name: SERVER_REWRITEBASEPATH
