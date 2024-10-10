@@ -4,23 +4,31 @@ metadata:
   name: fluentd-es
   namespace: efklog
   labels:
-    k8s-app: fluentd-es
+    app: fluentd-es
 spec:
   selector:
     matchLabels:
-      k8s-app: fluentd-es
+      app: fluentd-es
   template:
     metadata:
       labels:
-        k8s-app: fluentd-es
+        app: fluentd-es
     spec:
       serviceAccountName: fluentd-es
       containers:
       - name: fluentd-es
-        image: quay.io/fluentd_elasticsearch/fluentd:v2.7.0
+        image: fluent/fluentd-kubernetes-daemonset:v1.14-debian-elasticsearch7
         env:
         - name: FLUENTD_ARGS
           value: --no-supervisor -q
+        - name: FLUENT_ELASTICSEARCH_HOST
+          value: "elasticsearch-logging.efklog.svc.cluster.local" 
+        - name: FLUENT_ELASTICSEARCH_PORT
+          value: "9200"
+        - name: FLUENT_ELASTICSEARCH_LOGSTASH_PREFIX
+          value: "taytelar-logs"
+        - name: FLUENTD_SYSTEMD_CONF
+          value: disable
         resources:
           limits:
             memory: 500Mi

@@ -18,7 +18,7 @@ spec:
     spec:
       serviceAccountName: elasticsearch-logging
       containers:
-      - image: quay.io/fluentd_elasticsearch/elasticsearch:v7.3.2
+      - image: docker.elastic.co/elasticsearch/elasticsearch:7.3.2
         name: elasticsearch-logging
         imagePullPolicy: Always
         ports:
