@@ -27,6 +27,6 @@ data:
     <match **>
       @type elasticsearch
       logstash_format true
-      host elasticsearch.efklog.svc.cluster.local
+      host elasticsearch-logging
       port 9200
     </match>
