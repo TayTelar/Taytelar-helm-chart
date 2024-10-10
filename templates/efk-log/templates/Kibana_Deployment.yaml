@@ -32,4 +32,3 @@ spec:
             cpu: 1000m
           requests:
             cpu: 100m
-
