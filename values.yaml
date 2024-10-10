@@ -65,7 +65,6 @@ database:
         size: 1Gi
 
 
-
 efk: 
   namespace: efklog
 

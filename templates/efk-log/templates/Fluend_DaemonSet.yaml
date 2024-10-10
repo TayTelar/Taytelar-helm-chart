@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: fluentd-es
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.efk.namespace }}
   labels:
     app: fluentd-es
 spec:
@@ -17,7 +17,7 @@ spec:
       serviceAccountName: fluentd-es
       containers:
       - name: fluentd-es
-        image: {{ .Values.fluentd.image }}
+        image: {{ .Values.efk.fluentd.image }}
         env:
         - name: FLUENTD_ARGS
           value: --no-supervisor -q

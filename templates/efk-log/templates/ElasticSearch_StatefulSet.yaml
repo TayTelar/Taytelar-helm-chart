@@ -2,12 +2,12 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: elasticsearch-logging
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.efk.namespace }}
   labels:
     k8s-app: elasticsearch-logging
 spec:
   serviceName: elasticsearch-logging
-  replicas: {{ .Values.elasticsearch.replicas }}
+  replicas: {{ .Values.efk.elasticsearch.replicas }}
   selector:
     matchLabels:
       k8s-app: elasticsearch-logging
@@ -18,11 +18,11 @@ spec:
     spec:
       serviceAccountName: elasticsearch-logging
       containers:
-      - image: {{ .Values.elasticsearch.image }}
+      - image: {{ .Values.efk.elasticsearch.image }}
         name: elasticsearch-logging
         imagePullPolicy: Always
         ports:
-        - containerPort: {{ .Values.elasticsearch.servicePort }}
+        - containerPort: {{ .Values.efk.elasticsearch.servicePort }}
           name: db
         - containerPort: 9300
           name: transport

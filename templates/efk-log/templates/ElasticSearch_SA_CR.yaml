@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: elasticsearch-logging
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.efk.namespace }}
   labels:
     k8s-app: elasticsearch-logging
 
@@ -23,13 +23,13 @@ kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: elasticsearch-logging
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.efk.namespace }}
   labels:
     k8s-app: elasticsearch-logging
 subjects:
 - kind: ServiceAccount
   name: elasticsearch-logging
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.efk.namespace }}
 roleRef:
   kind: ClusterRole
   name: elasticsearch-logging
