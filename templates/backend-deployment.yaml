@@ -27,7 +27,7 @@ spec:
 
         - name: log-logger
           image: busybox
-          command: ['sh','-c', 'tail -f /var/log/pods/app.log > /var/log/pods/app.log']
+          command: ['sh', '-c', 'touch /var/log/pods/app.log && echo "$(date) - log entry" >> /var/log/pods/app.log && tail -f /var/log/pods/app.log']
           volumeMounts: 
             - mountPath: /var/log/pods
               name: log-volume
