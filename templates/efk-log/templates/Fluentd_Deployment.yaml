@@ -5,6 +5,7 @@ metadata:
   namespace: efklog
   labels:
     k8s-app: fluentd-es
+
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
@@ -16,6 +17,7 @@ rules:
 - apiGroups: [""]
   resources: ["namespaces", "pods"]
   verbs: ["get", "watch", "list"]
+
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
