@@ -9,7 +9,7 @@ data:
     - type: log
       enabled: true
       paths:
-        - /var/log/pods/taytelar-ns/*/*.log
+        - /var/log/pods/backend/*/*.log
 
     output.logstash:
       hosts: ["logstash:5044"]

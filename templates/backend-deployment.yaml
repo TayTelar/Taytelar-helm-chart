@@ -21,7 +21,16 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.backend.service.port }}
+          volumeMounts: 
+            - mountPath: /var/log/pods
+              name: log-volume
 
+        - name: log-logger
+          image: busybox
+          command: ['sh','-c', 'tail -f /var/log/pods/app.log > /var/log/pods/app.log']
+          volumeMounts: 
+            - mountPath: /var/log/pods
+              name: log-volume
           env:
             # PostgreSQL values
             - name: SPRING_DATASOURCE_URL
@@ -98,3 +107,7 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+
+      volumes:
+        - name: log-volume
+          emptyDir: {}
