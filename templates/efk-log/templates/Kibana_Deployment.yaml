@@ -6,7 +6,7 @@ metadata:
   labels:
     k8s-app: kibana-logging
 spec:
-  replicas: {{ .Values.kibana.replicas | default 1 }} 
+  replicas: 1 
   selector:
     matchLabels:
       k8s-app: kibana-logging
