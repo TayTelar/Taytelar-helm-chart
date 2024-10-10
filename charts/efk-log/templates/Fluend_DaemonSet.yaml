@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: fluentd-es
-  namespace: efklog
+  namespace: {{ .Values.efk.namespace }}
   labels:
     app: fluentd-es
 spec:
@@ -17,12 +17,12 @@ spec:
       serviceAccountName: fluentd-es
       containers:
       - name: fluentd-es
-        image: fluent/fluentd-kubernetes-daemonset:v1.14-debian-elasticsearch7
+        image: {{ .Values.efk.fluentd.image }}
         env:
         - name: FLUENTD_ARGS
           value: --no-supervisor -q
         - name: FLUENT_ELASTICSEARCH_HOST
-          value: "elasticsearch-logging.efklog.svc.cluster.local" 
+          value: "elasticsearch-logging.efklog.svc.cluster.local"
         - name: FLUENT_ELASTICSEARCH_PORT
           value: "9200"
         - name: FLUENT_ELASTICSEARCH_LOGSTASH_PREFIX

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: kibana-logging
-  namespace: efklog
+  namespace: {{ .Values.efk.namespace }}
   labels:
     k8s-app: kibana-logging
     kubernetes.io/cluster-service: "true"
@@ -15,4 +15,3 @@ spec:
     targetPort: 5601
   selector:
     k8s-app: kibana-logging
-  type: LoadBalancer

@@ -2,9 +2,10 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: fluentd-es
-  namespace: efklog
+  namespace: {{ .Values.efk.namespace }}
   labels:
     k8s-app: fluentd-es
+
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
@@ -16,6 +17,7 @@ rules:
 - apiGroups: [""]
   resources: ["namespaces", "pods"]
   verbs: ["get", "watch", "list"]
+
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
@@ -26,7 +28,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: fluentd-es
-  namespace: efklog
+  namespace: {{ .Values.efk.namespace }}
 roleRef:
   kind: ClusterRole
   name: fluentd-es

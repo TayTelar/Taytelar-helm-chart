@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: fluentd-config
-  namespace: efklog
+  namespace: {{ .Values.efk.namespace }}
 data:
   fluent.conf: |
     <source>
@@ -14,11 +14,9 @@ data:
         @type json
       </parse>
     </source>
-
     <filter kubernetes.**>
       @type kubernetes_metadata
     </filter>
-
     <filter kubernetes.**>
       @type grep
       <regexp>
@@ -26,10 +24,9 @@ data:
         pattern ^taytelar-ns$
       </regexp>
     </filter>
-
     <match **>
       @type elasticsearch
       logstash_format true
-      host elasticsearch.efklogs.svc.cluster.local
+      host elasticsearch.efklog.svc.cluster.local
       port 9200
     </match>
