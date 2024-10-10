@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: fluentd-es
-  namespace: efklog
+  namespace: {{ .Values.namespace }}
   labels:
     app: fluentd-es
 spec:
@@ -17,7 +17,7 @@ spec:
       serviceAccountName: fluentd-es
       containers:
       - name: fluentd-es
-        image: fluent/fluentd-kubernetes-daemonset:v1.14-debian-elasticsearch7
+        image: {{ .Values.fluentd.image }}
         env:
         - name: FLUENTD_ARGS
           value: --no-supervisor -q

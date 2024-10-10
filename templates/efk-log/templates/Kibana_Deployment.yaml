@@ -2,11 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kibana-logging
-  namespace: efklog
+  namespace: {{ .Values.namespace }}
   labels:
     k8s-app: kibana-logging
 spec:
-  replicas: 1
+  replicas: {{ .Values.kibana.replicas }}
   selector:
     matchLabels:
       k8s-app: kibana-logging
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: kibana-logging
-        image: docker.elastic.co/kibana/kibana-oss:7.3.2
+        image: {{ .Values.kibana.image }}
         ports:
         - containerPort: 5601
         env:

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: fluentd-config
-  namespace: efklog
+  namespace: {{ .Values.namespace }}
 data:
   fluent.conf: |
     <source>

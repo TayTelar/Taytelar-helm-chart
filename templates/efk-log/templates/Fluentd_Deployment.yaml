@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: fluentd-es
-  namespace: efklog
+  namespace: {{ .Values.namespace }}
   labels:
     k8s-app: fluentd-es
 
@@ -28,7 +28,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: fluentd-es
-  namespace: efklog
+  namespace: {{ .Values.namespace }}
 roleRef:
   kind: ClusterRole
   name: fluentd-es
