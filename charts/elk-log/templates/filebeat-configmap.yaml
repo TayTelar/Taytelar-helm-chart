@@ -3,13 +3,21 @@ kind: ConfigMap
 metadata:
   name: filebeat-config
   namespace: {{ .Values.efk.namespace }}
+  labels:
+    app: filebeat
 data:
   filebeat.yml: |
     filebeat.inputs:
     - type: log
       enabled: true
       paths:
-        - /var/log/pods/backend/*/*.log
+        - /var/log/pods/backend/*/*.log  
+      fields:
+        app: backend
+      fields_under_root: true
 
-    output.logstash:
-      hosts: ["logstash:5044"]
+    output.logstash: 
+      hosts: ["logstash-service:5044"]  
+
+    setup.kibana:
+      host: "kibana-service:5601"
