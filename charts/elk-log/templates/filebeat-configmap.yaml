@@ -17,7 +17,7 @@ data:
       fields_under_root: true
 
     output.logstash: 
-      hosts: ["logstash-service:5044"]  
+      hosts: ["logstash:5044"]  
 
     setup.kibana:
-      host: "kibana-service:5601"
+      host: "kibana:5601"
