@@ -24,13 +24,7 @@ spec:
           volumeMounts: 
             - mountPath: /var/log/pods
               name: log-volume
-
-        - name: log-logger
-          image: busybox
-          command: ['sh', '-c', 'touch /var/log/pods/app.log && echo "$(date) - log entry" >> /var/log/pods/app.log && tail -f /var/log/pods/app.log']
-          volumeMounts: 
-            - mountPath: /var/log/pods
-              name: log-volume
+              
           env:
             # PostgreSQL values
             - name: SPRING_DATASOURCE_URL
