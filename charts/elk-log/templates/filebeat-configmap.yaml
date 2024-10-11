@@ -11,7 +11,7 @@ data:
     - type: log
       enabled: true
       paths:
-        - /var/log/pods/taytelar-ns_backend-*/*/*.log
+        - /var/log/pods/*/*/*.log
       fields:
         app: backend
       fields_under_root: true
