@@ -11,7 +11,7 @@ data:
     - type: log
       enabled: true
       paths:
-        - /var/log/pods/backend/*/*.log  
+        - /var/log/*.log
       fields:
         app: backend
       fields_under_root: true
