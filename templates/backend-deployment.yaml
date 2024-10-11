@@ -31,9 +31,6 @@ spec:
           volumeMounts: 
             - mountPath: /var/log/pods
               name: log-volume
-              hostPath:
-                path: /var/log/pods/  
-                type: DirectoryOrCreate
           env:
             # PostgreSQL values
             - name: SPRING_DATASOURCE_URL
@@ -67,7 +64,6 @@ spec:
                   name: backend-secrets
                   key: razorpay-api-key-secret
 
-
             # Fast2SMS Credentials
             - name: FAST2SMS_CREDENTIALS
               valueFrom:
@@ -79,7 +75,6 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: fast2sms-api-url
-
 
             # AWS credentials and bucket
             - name: AWS_ACCESS_KEY_ID
@@ -113,4 +108,6 @@ spec:
 
       volumes:
         - name: log-volume
-          emptyDir: {}
+          hostPath:
+            path: /var/log/pods/  
+            type: DirectoryOrCreate
