@@ -15,11 +15,10 @@ spec:
       containers:
         - name: log-logger
           image: busybox
-          command: ['sh', '-c', 'tail -f /var/log/pods/app.log']  # Tailing the backend logs
+          command: ['sh', '-c', 'touch /var/log/pods/app.log && tail -f /var/log/pods/app.log']
           volumeMounts: 
             - mountPath: /var/log/pods
               name: log-volume
-
       volumes:
         - name: log-volume
           hostPath:
