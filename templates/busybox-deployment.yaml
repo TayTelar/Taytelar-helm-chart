@@ -15,7 +15,7 @@ spec:
       containers:
         - name: log-logger
           image: busybox
-          command: ['sh', '-c', 'tail -f /var/log/pods/taytelar-ns_backend-65c94fb487-d44lm_3227428a-b606-4e3d-b056-4863224015f0/backend/0.log']
+          command: ['sh', '-c', 'tail -f /var/log/pods/taytelar-ns_backend-*/backend/*.log']
           volumeMounts: 
             - mountPath: /var/log/pods
               name: log-volume
