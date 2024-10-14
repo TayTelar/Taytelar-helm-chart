@@ -3,13 +3,12 @@ kind: Ingress
 metadata:
   name: frontend-backend-ingress
   annotations:
-    kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
 spec:
+  ingressClassName: alb  # Replacing deprecated annotation
   tls:
     - hosts:
         - taytelar.example.com
-
   rules:
     - host: taytelar.example.com
       http:
