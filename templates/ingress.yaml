@@ -5,25 +5,26 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
 spec:
-  ingressClassName: alb  # Replacing deprecated annotation
+  ingressClassName: alb
   tls:
     - hosts:
-        - taytelar.example.com
+        - dev.taytelar.com
+      secretName: taytelar-tls-secret
   rules:
-    - host: taytelar.example.com
+    - host: dev.taytelar.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: frontend
+                name: frontend-service
                 port:
                   number: {{ .Values.frontend.service.port }}
           - path: /api
             pathType: Prefix
             backend:
               service:
-                name: backend
+                name: backend-service
                 port:
                   number: {{ .Values.backend.service.port }}
