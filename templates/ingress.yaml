@@ -4,16 +4,11 @@ metadata:
   name: frontend-backend-ingress
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip 
+    alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/group.name: taytelar-ingress-group
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/your-certificate-arn
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
 spec:
   ingressClassName: alb
-  tls:
-    - hosts:
-        - dev.taytelar.com
-      secretName: taytelar-tls-secret
   rules:
     - host: dev.taytelar.com
       http:
