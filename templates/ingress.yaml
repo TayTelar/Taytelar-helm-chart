@@ -7,7 +7,6 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip 
     alb.ingress.kubernetes.io/group.name: taytelar-ingress-group
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/your-certificate-arn
 spec:
   ingressClassName: alb
   tls:
