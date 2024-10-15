@@ -9,10 +9,7 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
 spec:
   ingressClassName: alb
-  tls:
-    - hosts:
-        - dev.taytelar.com
-      secretName: taytelar-tls-secret
+
   rules:
     - host: dev.taytelar.com
       http:
