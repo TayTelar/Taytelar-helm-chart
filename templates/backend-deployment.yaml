@@ -13,7 +13,7 @@ spec:
         app: backend
     spec:
       imagePullSecrets:
-        - name: ecr-secret  # Proper image pull secret to access ECR
+        - name: ecr-secret
 
       containers:
         - name: backend

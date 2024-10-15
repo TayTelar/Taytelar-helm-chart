@@ -5,7 +5,7 @@ frontend:
     repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/taytelar-frontend
     tag: latest
   service:
-    type: LoadBalancer
+    type: ClusterIP
     port: 80
     targetPort: 80
 
