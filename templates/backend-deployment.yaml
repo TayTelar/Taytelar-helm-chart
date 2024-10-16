@@ -24,18 +24,18 @@ spec:
           volumeMounts: 
             - mountPath: /var/log/pods
               name: log-volume
-              
           env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{ .Values.backend.spring.profile }}
+
             # PostgreSQL values
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://{{ .Values.database.postgres.name }}:5432/{{ .Values.database.postgres.dbname }}
-              
             - name: POSTGRES_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
                   key: postgres-username
-                  
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -76,13 +76,11 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: aws-access-key
-                  
             - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
                   key: aws-secret-key
-                  
             - name: AWS_BUCKET_NAME
               valueFrom:
                 secretKeyRef:
@@ -100,7 +98,6 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: google-map-api-url
-                  
             - name: AWS_REGION
               value: ap-south-1
 
