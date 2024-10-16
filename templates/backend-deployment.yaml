@@ -19,14 +19,14 @@ spec:
         - name: backend
           image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
           imagePullPolicy: Always
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{ .Values.backend.spring.profile }}
           ports:
             - containerPort: {{ .Values.backend.service.port }}
           volumeMounts: 
             - mountPath: /var/log/pods
               name: log-volume
-          env:
-            - name: SPRING_PROFILES_ACTIVE
-              value: {{ .Values.backend.spring.profile }}
 
             # PostgreSQL values
             - name: SPRING_DATASOURCE_URL
