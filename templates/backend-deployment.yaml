@@ -89,6 +89,18 @@ spec:
                   name: backend-secrets
                   key: aws-bucket-name
 
+            - name: GOOGLE_MAP_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: google-map-api-key
+
+            - name: GOOGLE_MAP_URL
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: google-map-api-url
+                  
             - name: AWS_REGION
               value: ap-south-1
 
