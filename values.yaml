@@ -24,25 +24,28 @@ env:
     region: ap-south-1
     access_key: test
     secret_key: test
-    bucketName: product-images-2024
+    bucketName: test
   
 
 thirdparty:
   razopay_api:
-      id: rzp_test_nHgaZ8pP0SqyOm
-      secret: y02XoqnCoIJbVHHvPGKcQPCd
+      id: test
+      secret: test
 
   fastsms_api:
-      id: Ob0rxjvg6qkgAKMztEjMKeKPHF9O7dTgTPJtRvb4cKqrWEWvOUqpoSDpmUmw
-      url: https://www.fast2sms.com/dev/bulkV2?authorization=
-  
+      id: test
+      url: test
+
+  google_maps_api:
+    key: test
+    url: test
 
 database:
   postgres:
     name: postgres-service
     image: postgres:13
-    username: postgres
-    password: taytelar 
+    username: test
+    password: test 
     dbname: Tay-Telar
     host: postgres-service
     port: 5432
