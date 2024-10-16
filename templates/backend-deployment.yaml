@@ -30,13 +30,13 @@ spec:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://{{ .Values.database.postgres.name }}:5432/{{ .Values.database.postgres.dbname }}
               
-            - name: SPRING_DATASOURCE_USERNAME
+            - name: POSTGRES_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
                   key: postgres-username
                   
-            - name: SPRING_DATASOURCE_PASSWORD
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
@@ -59,7 +59,7 @@ spec:
                   key: razorpay-api-key-secret
 
             # Fast2SMS Credentials
-            - name: FAST2SMS_CREDENTIALS
+            - name: FAST2SMS_API_KEY
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
