@@ -1,5 +1,5 @@
 efk: 
-  namespace: elk
+  namespace: taytelar-elk
 
   elasticsearch:
     image: "quay.io/fluentd_elasticsearch/elasticsearch:v7.3.2"
