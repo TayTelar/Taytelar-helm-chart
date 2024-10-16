@@ -31,12 +31,12 @@ spec:
             # PostgreSQL values
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://{{ .Values.database.postgres.name }}:5432/{{ .Values.database.postgres.dbname }}
-            - name: POSTGRES_USERNAME
+            - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
                   key: postgres-username
-            - name: POSTGRES_PASSWORD
+            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
@@ -47,7 +47,7 @@ spec:
               value: mongodb://{{ .Values.database.mongodb.name }}:27017/{{ .Values.database.mongodb.dbname }}
 
             # Razorpay Credentials
-            - name: RAZORPAY_API_KEY
+            - name: RAZORPAY_API_KEY_ID
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
