@@ -7,7 +7,8 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/group.name: taytelar-ingress-group
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    alb.ingress.kubernetes.io/redirect-http-to-https: "false"  # If you're not using HTTPS
+    alb.ingress.kubernetes.io/actions.default: '{"Type": "forward", "ForwardConfig": {"TargetGroupArn": "k8s-taytelar-frontend-<your-frontend-target-group-arn>"}}'  # Replace with your frontend target group ARN
 spec:
   ingressClassName: alb
   rules:
@@ -22,6 +23,20 @@ spec:
                 port:
                   number: {{ .Values.backend.service.port }}
           - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: {{ .Values.frontend.service.port }}
+          - path: /home
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: {{ .Values.frontend.service.port }}
+          - path: /*
             pathType: Prefix
             backend:
               service:
