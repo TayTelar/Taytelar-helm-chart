@@ -27,9 +27,8 @@ spec:
                 name: frontend-service
                 port:
                   number: {{ .Values.frontend.service.port }}
-          # Catch-all rule for frontend routing (for client-side paths like /login)
           - path: /*
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: frontend-service
