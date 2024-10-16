@@ -19,11 +19,11 @@ spec:
         - name: backend
           image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
           imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.backend.service.port }}
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .Values.backend.spring.profile }}
-          ports:
-            - containerPort: {{ .Values.backend.service.port }}
           volumeMounts: 
             - mountPath: /var/log/pods
               name: log-volume
