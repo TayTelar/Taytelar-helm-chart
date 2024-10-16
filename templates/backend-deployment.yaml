@@ -21,13 +21,12 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.backend.service.port }}
+
+          # Define environment variables here
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .Values.backend.spring.profile }}
-          volumeMounts: 
-            - mountPath: /var/log/pods
-              name: log-volume
-
+              
             # PostgreSQL values
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://{{ .Values.database.postgres.name }}:5432/{{ .Values.database.postgres.dbname }}
@@ -100,6 +99,11 @@ spec:
                   key: google-map-api-url
             - name: AWS_REGION
               value: ap-south-1
+
+          # Define volume mounts here
+          volumeMounts: 
+            - mountPath: /var/log/pods
+              name: log-volume
 
           resources:
             requests:
