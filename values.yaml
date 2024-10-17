@@ -56,6 +56,7 @@ database:
 
   mongodb:
     name: mongo-service
+    image: mongo:latest
     dbname: TayTelar
     enabled: true
     port: 27017
