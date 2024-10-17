@@ -1,33 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: {{ .Values.backend.name }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: backend
+      app: {{ .Values.backend.name }}
   template:
     metadata:
       labels:
-        app: backend
+        app: {{ .Values.backend.name }}
     spec:
       imagePullSecrets:
         - name: ecr-secret
-
       containers:
-        - name: backend
+        - name: {{ .Values.backend.name }}
           image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
           imagePullPolicy: {{ .Values.backend.pullPolicy }}
           ports:
             - containerPort: {{ .Values.backend.service.port }}
-
-          # Define environment variables here
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .Values.backend.spring.profile }}
-              
-            # PostgreSQL values
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}
             - name: DB_USERNAME
@@ -40,12 +35,8 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: postgres-password
-
-            # MongoDB values
             - name: SPRING_DATA_MONGODB_URI
               value: mongodb://{{ .Values.database.mongodb.name }}:{{ .Values.database.mongodb.port }}/{{ .Values.database.mongodb.dbname }}
-
-            # Razorpay Credentials
             - name: RAZORPAY_API_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -56,8 +47,6 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: razorpay-api-key-secret
-
-            # Fast2SMS Credentials
             - name: FAST2SMS_API_KEY
               valueFrom:
                 secretKeyRef:
@@ -68,8 +57,6 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: fast2sms-api-url
-
-            # AWS credentials and bucket
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -85,13 +72,11 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: aws-bucket-name
-
             - name: GOOGLE_MAP_KEY
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
                   key: google-map-api-key
-
             - name: GOOGLE_MAP_URL
               valueFrom:
                 secretKeyRef:
@@ -99,12 +84,9 @@ spec:
                   key: google-map-api-url
             - name: AWS_REGION
               value: {{ .Values.env.aws.region }}
-
-          # Define volume mounts here
           volumeMounts: 
             - mountPath: /var/log/pods
               name: log-volume
-
           resources:
             requests:
               memory: "256Mi"
@@ -112,7 +94,6 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
-
       volumes:
         - name: log-volume
           hostPath:

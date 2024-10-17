@@ -1,22 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
-  namespace: taytelar-ns
+  name: {{ .Values.frontend.name }}
 spec:
-  replicas:  {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: frontend
+      app: {{ .Values.frontend.name }}
   template:
     metadata:
       labels:
-        app: frontend
+        app: {{ .Values.frontend.name }}
     spec:
       imagePullSecrets:
       - name: ecr-secret
       containers:
-      - name: frontend
+      - name: {{ .Values.frontend.name }}
         image: {{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}
         ports:
         - containerPort: {{ .Values.frontend.service.port }}
