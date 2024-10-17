@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Values.elk.kibana.name }}
-  namespace: {{ .Values.efk.namespace }}
+  namespace: {{ .Values.elk.namespace }}
 spec:
   selector:
     app: {{ .Values.elk.kibana.name }}
