@@ -27,10 +27,3 @@ spec:
                 name: {{ .Values.ingress.backend.service.frontend.name }}
                 port:
                   number: {{ .Values.ingress.backend.service.frontend.port }}
-          - path: /
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: {{ .Values.ingress.backend.service.frontend.name }}
-                port:
-                  number: {{ .Values.ingress.backend.service.frontend.port }}
