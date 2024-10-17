@@ -46,6 +46,7 @@ thirdparty:
 database:
   postgres:
     name: postgres-service
+    image: postgres:13
     username: test
     password: test
     dbname: Tay-Telar
