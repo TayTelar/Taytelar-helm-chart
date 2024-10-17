@@ -1,13 +1,13 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: filebeat-cluster-role-binding
-  namespace: {{ .Values.efk.namespace }}
+  name: {{ .Values.elk.filebeat.cluster-role-binding }}
+  namespace: {{ .Values.elk.namespace }}
 subjects:
 - kind: ServiceAccount
-  name: filebeat
+  name: {{ .Values.elk.filebeat.name }}
   namespace: default
 roleRef:
   kind: ClusterRole
-  name: filebeat-cluster-role
+  name: {{ .Values.elk.filebeat.cluster-role }}
   apiGroup: rbac.authorization.k8s.io

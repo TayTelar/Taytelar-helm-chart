@@ -2,9 +2,9 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: filebeat-config
-  namespace: {{ .Values.efk.namespace }}
+  namespace: {{ .Values.elk.namespace }}
   labels:
-    app: filebeat
+    app: {{ .Values.elk.filebeat.name }}
 data:
   filebeat.yml: |
     filebeat.inputs:

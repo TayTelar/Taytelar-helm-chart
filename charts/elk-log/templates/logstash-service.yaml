@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: logstash
-  namespace: {{ .Values.efk.namespace }}
+  name: {{ .Values.elk.logstash.name }}
+  namespace: {{ .Values.elk.namespace }}
 spec:
   selector:
-    app: logstash
+    app: {{ .Values.elk.logstash.name }}
   ports:
-    - protocol: TCP
-      port: 5044
-      targetPort: 5044
+    - protocol: {{ .Values.elk.logstash.protocol }}
+      port: {{ .Values.elk.logstash.port }}
+      targetPort: {{ .Values.elk.logstash.targetPort }}

@@ -1,16 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: kibana
+  name: {{ .Values.elk.kibana.name }}
   namespace: {{ .Values.efk.namespace }}
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-internal: "false"
 spec:
   selector:
-    app: kibana
+    app: {{ .Values.elk.kibana.name }}
   ports:
-    - protocol: TCP
-      port: 5601
-      targetPort: 5601
-      nodePort: 30228
-  type: LoadBalancer
+    - protocol: {{ .Values.elk.kibana.protocol }}
+      port: {{ .Values.elk.kibana.port }}
+      targetPort: {{ .Values.elk.kibana.targetPort }}
+      nodePort: {{ .Values.elk.kibana.nodePort }}
+  type: {{ .Values.elk.kibana.type }}

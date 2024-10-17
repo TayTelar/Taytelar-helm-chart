@@ -1,21 +1,47 @@
-efk: 
+elk: 
   namespace: elk
 
   elasticsearch:
-    image: "quay.io/fluentd_elasticsearch/elasticsearch:v7.3.2"
-    replicas: 2
-    servicePort: 9200
+    image: "docker.elastic.co/elasticsearch/elasticsearch:7.10.0"
+    name: elasticsearch
+    replicas: 1
+    port: 9200
+    targetPort: 9200
+    nodePort: 31174
+    protocol: TCP
+    type: LoadBalancer
   
-  fluentd:
-    image: "quay.io/fluentd_elasticsearch/fluentd:v2.7.0"
+  filebeat:
+    name: filebeat
+    image: "docker.elastic.co/beats/filebeat:7.10.0"
+    replicas: 1      
+    cluster-role: filebeat-cluster-role
+    cluster-role-binding: filebeat-cluster-role-binding
     resources:
       limits:
         memory: "500Mi"
       requests:
         cpu: "100m"
         memory: "200Mi"
-  
-  kibana:
-    image: "docker.elastic.co/kibana/kibana-oss:7.3.2"
+
+  logstash:
+    name: logstash
+    image: "docker.elastic.co/logstash/logstash:7.10.0"
     replicas: 1
-    servicePort: 5601
+    containerPort: 5044
+    protocol: TCP
+    port: 5044
+    targetPort: 5044
+
+  kibana:
+    name: kibana
+    image: "docker.elastic.co/kibana/kibana:7.10.0"
+    replicas: 1
+    containerPort: 5601
+    protocol: TCP
+    port: 5601
+    targetPort: 5601
+    nodePort: 30228
+    type: LoadBalancer
+
+

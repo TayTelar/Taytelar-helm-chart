@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kibana
-  namespace: {{ .Values.efk.namespace }}
+  name: {{ .Values.elk.kibana.name }}
+  namespace: {{ .Values.elk.namespace }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.elk.kibana.replicas }}
   selector:
     matchLabels:
-      app: kibana
+      app: {{ .Values.elk.kibana.name }}
   template:
     metadata:
       labels:
-        app: kibana
+        app: {{ .Values.elk.kibana.name }}
     spec:
       containers:
-      - name: kibana
-        image: docker.elastic.co/kibana/kibana:7.10.0
+      - name: {{ .Values.elk.kibana.name }}
+        image: {{ .Values.elk.kibana.image }}
         ports:
-        - containerPort: 5601
+        - containerPort: {{ .Values.elk.kibana.containerPort }}

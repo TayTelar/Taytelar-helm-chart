@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: elasticsearch
-  namespace: {{ .Values.efk.namespace }}
+  name: {{ .Values.elk.elasticsearch.name }}
+  namespace: {{ .Values.elk.namespace }}
 spec:
   selector:
-    app: elasticsearch
+    app: {{ .Values.elk.elasticsearch.name }}
   ports:
-    - protocol: TCP
-      port: 9200
-      targetPort: 9200
-      nodePort: 31174
-  type: LoadBalancer
+    - protocol: {{ .Values.elk.elasticsearch.protocol }}
+      port: {{ .Values.elk.elasticsearch.port }}
+      targetPort: {{ .Values.elk.elasticsearch.targetPort }}
+      nodePort: {{ .Values.elk.elasticsearch.nodePort }}
+  type: {{ .Values.elk.elasticsearch.type }}

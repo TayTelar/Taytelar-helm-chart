@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: filebeat
-  namespace: {{ .Values.efk.namespace }}
+  name: {{ .Values.elk.filebeat.name }}
+  namespace: {{ .Values.elk.namespace }}
   labels:
-    app: filebeat
+    app: {{ .Values.elk.filebeat.name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.elk.filebeat.replicas }}
   selector:
     matchLabels:
-      app: filebeat
+      app: {{ .Values.elk.filebeat.name }}
   template:
     metadata:
       labels:
-        app: filebeat
+        app: {{ .Values.elk.filebeat.name }}
     spec:
       containers:
-      - name: filebeat
-        image: docker.elastic.co/beats/filebeat:7.10.0
+      - name: {{ .Values.elk.filebeat.name }}
+        image: {{ .Values.elk.filebeat.image }}
         args: [
           "-e", 
           "-c", "/usr/share/filebeat/filebeat.yml"

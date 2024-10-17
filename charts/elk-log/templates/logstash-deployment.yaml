@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: logstash
-  namespace: {{ .Values.efk.namespace }}
+  name: {{ .Values.elk.logstash.name }}
+  namespace: {{ .Values.elk.namespace }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.elk.logstash.replicas }}
   selector:
     matchLabels:
-      app: logstash
+      app: {{ .Values.elk.logstash.name }}
   template:
     metadata:
       labels:
-        app: logstash
+        app: {{ .Values.elk.logstash.name }}
     spec:
       containers:
-      - name: logstash
+      - name: {{ .Values.elk.logstash.name }}
         image: docker.elastic.co/logstash/logstash:7.10.0
         ports:
-        - containerPort: 5044
+        - containerPort: {{ .Values.elk.logstash.containerPort }}
         volumeMounts:
         - name: logstash-config
           mountPath: /usr/share/logstash/pipeline

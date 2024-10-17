@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: elasticsearch
-  namespace: {{ .Values.efk.namespace }}
+  name: {{ .Values.elk.elasticsearch.name }}
+  namespace: {{ .Values.elk.namespace }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.elk.elasticsearch.replicas }}
   selector:
     matchLabels:
-      app: elasticsearch
+      app: {{ .Values.elk.elasticsearch.name }}
   template:
     metadata:
       labels:
-        app: elasticsearch
+        app: {{ .Values.elk.elasticsearch.name }}
     spec:
       containers:
-      - name: elasticsearch
-        image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+      - name: {{ .Values.elk.elasticsearch.name }}
+        image: {{ .Values.elk.elasticsearch.image }}
         resources:
           requests:
             memory: "2Gi"
