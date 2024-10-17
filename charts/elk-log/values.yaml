@@ -22,8 +22,8 @@ elk:
     name: filebeat
     image: "docker.elastic.co/beats/filebeat:7.10.0"
     replicas: 1      
-    cluster-role: filebeat-cluster-role
-    cluster-role-binding: filebeat-cluster-role-binding
+    clusterRole: filebeat-cluster-role
+    clusterRoleBinding: filebeat-cluster-role-binding
     resources:
       limits:
         memory: "500Mi"
