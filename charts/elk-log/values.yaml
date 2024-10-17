@@ -10,6 +10,13 @@ elk:
     nodePort: 31174
     protocol: TCP
     type: LoadBalancer
+    resources:
+      requests:
+        memory: "2Gi"
+        cpu: "200m"
+      limits:
+        memory: "2Gi"
+        cpu: "500m"
   
   filebeat:
     name: filebeat

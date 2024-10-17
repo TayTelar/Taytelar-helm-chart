@@ -18,11 +18,11 @@ spec:
         image: {{ .Values.elk.elasticsearch.image }}
         resources:
           requests:
-            memory: "2Gi"
-            cpu: "200m"
+            memory: {{ .Values.elk.elasticsearch.resources.requests.memory }}
+            cpu: {{ .Values.elk.elasticsearch.resources.requests.cpu }}
           limits:
-            memory: "2Gi"
-            cpu: "500m"
+            memory: {{ .Values.elk.elasticsearch.resources.limits.memory }}
+            cpu: {{ .Values.elk.elasticsearch.resources.limits.cpu }}
         env:
         - name: discovery.type
           value: single-node
