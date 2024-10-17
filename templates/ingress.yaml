@@ -3,10 +3,10 @@ kind: Ingress
 metadata:
   name: {{ .Values.ingress.name }}
   annotations:
-    alb.ingress.kubernetes.io/scheme: {{ .Values.ingress.annotations."alb.ingress.kubernetes.io/scheme" }}
-    alb.ingress.kubernetes.io/target-type: {{ .Values.ingress.annotations."alb.ingress.kubernetes.io/target-type" }}
-    alb.ingress.kubernetes.io/group.name: {{ .Values.ingress.annotations."alb.ingress.kubernetes.io/group.name" }}
-    alb.ingress.kubernetes.io/listen-ports: {{ .Values.ingress.annotations."alb.ingress.kubernetes.io/listen-ports" }}
+    alb.ingress.kubernetes.io/scheme: {{ .Values.ingress.annotations.alb.ingress.kubernetes.io/scheme }}
+    alb.ingress.kubernetes.io/target-type: {{ .Values.ingress.annotations.alb.ingress.kubernetes.io/target-type }}
+    alb.ingress.kubernetes.io/group.name: {{ .Values.ingress.annotations.alb.ingress.kubernetes.io/group.name }}
+    alb.ingress.kubernetes.io/listen-ports: {{ .Values.ingress.annotations.alb.ingress.kubernetes.io/listen-ports }}
 spec:
   ingressClassName: alb
   rules:
