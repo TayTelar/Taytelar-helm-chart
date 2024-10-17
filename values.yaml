@@ -70,9 +70,4 @@ hpa:
 ingress:
   enabled: true
   name: frontend-backend-ingress
-  annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/group.name: taytelar-ingress-group
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
   host: dev.taytelar.com
