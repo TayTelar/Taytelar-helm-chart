@@ -78,7 +78,6 @@ busybox:
   replicaCount: 1
   image:
     repository: busybox
-  logCommand: ['sh', '-c', 'tail -f /var/log/pods/taytelar-ns_backend-*/backend/*.log']
   volumeMount:
     path: /var/log/pods
   volume:
