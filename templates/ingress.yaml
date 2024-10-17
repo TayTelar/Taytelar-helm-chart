@@ -1,36 +1,36 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: frontend-backend-ingress
+  name: {{ .Values.ingress.name }}
   annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/group.name: taytelar-ingress-group
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/scheme: {{ .Values.ingress.annotations."alb.ingress.kubernetes.io/scheme" }}
+    alb.ingress.kubernetes.io/target-type: {{ .Values.ingress.annotations."alb.ingress.kubernetes.io/target-type" }}
+    alb.ingress.kubernetes.io/group.name: {{ .Values.ingress.annotations."alb.ingress.kubernetes.io/group.name" }}
+    alb.ingress.kubernetes.io/listen-ports: {{ .Values.ingress.annotations."alb.ingress.kubernetes.io/listen-ports" }}
 spec:
   ingressClassName: alb
   rules:
-    - host: dev.taytelar.com
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
           - path: /api
             pathType: Prefix
             backend:
               service:
-                name: backend-service
+                name: {{ .Values.ingress.backend.service.backend.name }}
                 port:
-                  number: {{ .Values.backend.service.port }}
+                  number: {{ .Values.ingress.backend.service.backend.port }}
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: frontend-service
+                name: {{ .Values.ingress.backend.service.frontend.name }}
                 port:
-                  number: {{ .Values.frontend.service.port }}
+                  number: {{ .Values.ingress.backend.service.frontend.port }}
           - path: /*
             pathType: ImplementationSpecific
             backend:
               service:
-                name: frontend-service
+                name: {{ .Values.ingress.backend.service.frontend.name }}
                 port:
-                  number: {{ .Values.frontend.service.port }}
+                  number: {{ .Values.ingress.backend.service.frontend.port }}

@@ -5,8 +5,8 @@ metadata:
 spec:
   type: {{ .Values.backend.service.type }}
   ports:
-  - protocol: TCP
-    port: {{ .Values.backend.service.port }}
-    targetPort: {{ .Values.backend.service.targetPort }}
+    - protocol: TCP
+      port: {{ .Values.backend.service.port }}
+      targetPort: {{ .Values.backend.service.targetPort }}
   selector:
     app: backend

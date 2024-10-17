@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: backend
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: backend
@@ -18,7 +18,7 @@ spec:
       containers:
         - name: backend
           image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
-          imagePullPolicy: Always
+          imagePullPolicy: {{ .Values.backend.pullPolicy }}
           ports:
             - containerPort: {{ .Values.backend.service.port }}
 
@@ -29,7 +29,7 @@ spec:
               
             # PostgreSQL values
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://{{ .Values.database.postgres.name }}:5432/{{ .Values.database.postgres.dbname }}
+              value: jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -43,7 +43,7 @@ spec:
 
             # MongoDB values
             - name: SPRING_DATA_MONGODB_URI
-              value: mongodb://{{ .Values.database.mongodb.name }}:27017/{{ .Values.database.mongodb.dbname }}
+              value: mongodb://{{ .Values.database.mongodb.name }}:{{ .Values.database.mongodb.port }}/{{ .Values.database.mongodb.dbname }}
 
             # Razorpay Credentials
             - name: RAZORPAY_API_KEY_ID
@@ -98,7 +98,7 @@ spec:
                   name: backend-secrets
                   key: google-map-api-url
             - name: AWS_REGION
-              value: ap-south-1
+              value: {{ .Values.env.aws.region }}
 
           # Define volume mounts here
           volumeMounts: 

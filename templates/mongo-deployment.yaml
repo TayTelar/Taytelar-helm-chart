@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: "{{ .Values.database.mongodb.name }}"
-        image: "{{ .Values.database.mongodb.image }}"  # Quoting the Helm variable
+        image: "{{ .Values.database.mongodb.image }}"
         ports:
         - containerPort: 27017

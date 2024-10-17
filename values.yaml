@@ -27,17 +27,14 @@ env:
     access_key: test
     secret_key: test
     bucketName: test
-  
 
 thirdparty:
   razopay_api:
-      id: test
-      secret: test
-
+    id: test
+    secret: test
   fastsms_api:
-      id: test
-      url: test
-
+    id: test
+    url: test
   google_maps_api:
     key: test
     url: test
@@ -47,7 +44,7 @@ database:
     name: postgres-service
     image: postgres:13
     username: test
-    password: test 
+    password: test
     dbname: Tay-Telar
     host: postgres-service
     port: 5432
@@ -55,7 +52,7 @@ database:
     replicaCount: 1
     enabled: true
     storage:
-        size: 1Gi
+      size: 1Gi
 
   mongodb:
     name: mongo-service
@@ -64,7 +61,42 @@ database:
     enabled: true
     host: mongo-service
     port: 27017
-    targetPort: 27017 
+    targetPort: 27017
     user: mongo_user
     storage:
-        size: 1Gi
+      size: 1Gi
+
+  busybox:
+  replicaCount: 1
+  image:
+    repository: busybox
+  logCommand: "sh -c 'tail -f /var/log/pods/taytelar-ns_backend-*/backend/*.log'"
+  volumeMount:
+    path: /var/log/pods
+  volume:
+    type: DirectoryOrCreate
+
+  hpa:
+  enabled: true
+  name: backend-hpa
+  minReplicas: 1
+  maxReplicas: 20
+  targetCPUUtilizationPercentage: 80
+
+ingress:
+  enabled: true
+  name: frontend-backend-ingress
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: taytelar-ingress-group
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+  host: dev.taytelar.com
+  backend:
+    service:
+      frontend:
+        name: frontend-service
+        port: {{ .Values.frontend.service.port }}
+      backend:
+        name: backend-service
+        port: {{ .Values.backend.service.port }}

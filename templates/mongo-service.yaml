@@ -6,7 +6,7 @@ spec:
   ports:
   - port: 27017
     protocol: TCP
-    targetPort: 27017  # Ensure this matches the containerPort in the Deployment
+    targetPort: 27017
   selector:
     app: {{ .Release.Name }}-mongo
   type: ClusterIP
