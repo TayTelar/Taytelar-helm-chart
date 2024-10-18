@@ -21,8 +21,6 @@ spec:
           ports:
             - containerPort: {{ .Values.backend.service.port }}
           env:
-            - name: SPRING_PROFILES_ACTIVE
-              value: {{ .Values.backend.spring.profile }}
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}
             - name: DB_USERNAME
