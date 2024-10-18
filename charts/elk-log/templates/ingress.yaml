@@ -10,7 +10,7 @@ metadata:
 
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/group.name: taytelar-ingress-group
+    alb.ingress.kubernetes.io/group.name: elk-ingress-group
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 5601}]'
 
 spec:
@@ -19,7 +19,7 @@ spec:
     - host: kibana.taytelar.com
       http:
         paths:
-          - path: /
+          - path: /kibana
             pathType: Prefix
             backend:
               service:
@@ -27,11 +27,10 @@ spec:
                 port:
                   number: {{ .Values.elk.kibana.port }}
 
-          - path: /
+          - path: /elasticsearch
             pathType: Prefix
             backend:
               service:
                 name: {{ .Values.elk.elasticsearch.name }}
                 port:
                   number: {{ .Values.elk.elasticsearch.port }}
-
