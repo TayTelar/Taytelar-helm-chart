@@ -10,5 +10,4 @@ spec:
     - protocol: {{ .Values.elk.elasticsearch.protocol }}
       port: {{ .Values.elk.elasticsearch.port }}
       targetPort: {{ .Values.elk.elasticsearch.targetPort }}
-      nodePort: {{ .Values.elk.elasticsearch.nodePort }}
   type: {{ .Values.elk.elasticsearch.type }}

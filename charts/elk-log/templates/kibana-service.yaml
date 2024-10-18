@@ -10,5 +10,4 @@ spec:
     - protocol: {{ .Values.elk.kibana.protocol }}
       port: {{ .Values.elk.kibana.port }}
       targetPort: {{ .Values.elk.kibana.targetPort }}
-      nodePort: {{ .Values.elk.kibana.nodePort }}
   type: {{ .Values.elk.kibana.type }}
