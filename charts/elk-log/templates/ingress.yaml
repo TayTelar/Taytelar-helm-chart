@@ -4,11 +4,10 @@ metadata:
   name: elk-ingress
   namespace: {{ .Values.elk.namespace }}
   annotations:
-
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/group.name: elk-ingress-group
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 5601}]'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 5601}, {"HTTP": 9200}]'
 
 spec:
   ingressClassName: alb
