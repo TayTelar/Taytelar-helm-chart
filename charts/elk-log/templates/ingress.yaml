@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: elk-ingress
+  namespace: {{ .Values.elk.namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  rules:
+    - host: kibana.taytelar.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.elk.kibana.name }}
+                port:
+                  number: {{ .Values.elk.kibana.port }}
+
+    - host: elasticsearch.taytelar.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.elk.elasticsearch.name }}
+                port:
+                  number: {{ .Values.elk.elasticsearch.port }}
