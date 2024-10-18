@@ -7,6 +7,8 @@ metadata:
      alb.ingress.kubernetes.io/target-type: ip
      alb.ingress.kubernetes.io/group.name: taytelar-ingress-group
      alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+     external-dns.alpha.kubernetes.io/hostname: dev.taytelar.com
+     external-dns.alpha.kubernetes.io/ttl: "300"
 spec:
   ingressClassName: alb
   rules:
