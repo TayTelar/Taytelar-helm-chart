@@ -23,12 +23,12 @@ spec:
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}
-            - name: DB_USERNAME
+            - name: POSTGRES_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
                   key: postgres-username
-            - name: DB_PASSWORD
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
