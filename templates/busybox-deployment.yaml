@@ -15,7 +15,7 @@ spec:
       containers:
         - name: log-logger
           image: {{ .Values.busybox.image.repository }}
-          command: [{{ .Values.busybox.logCommand }}]
+          command: ['sh', '-c', 'tail -f /var/log/pods/taytelar-ns_backend-*/backend/*.log']
           volumeMounts: 
             - mountPath: {{ .Values.busybox.volumeMount.path }}
               name: log-volume
