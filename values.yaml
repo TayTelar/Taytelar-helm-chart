@@ -83,3 +83,4 @@ busybox:
     path: /var/log/pods
   volume:
     type: DirectoryOrCreate
+
