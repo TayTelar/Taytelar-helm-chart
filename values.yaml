@@ -71,8 +71,9 @@ hpa:
 
 ingress:
   enabled: true
-  name: frontend-backend-ingress
+  name: taytelar-ingress
   host: dev.taytelar.com
+  hostname: dev.taytelar.com
 
 busybox:
   replicaCount: 1
