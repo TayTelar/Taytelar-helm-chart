@@ -6,13 +6,14 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-    alb.ingress.kubernetes.io/group.name: taytelar-ingress-group
-    alb.ingress.kubernetes.io/healthcheck-path: /health
-    alb.ingress.kubernetes.io/load-balancer-arn: arn:aws:elasticloadbalancing:ap-south-1:794038231860:loadbalancer/app/Taytellar-ALB/b0d1facdd2ff6afd
-
+    
+    alb.ingress.kubernetes.io/load-balancer-arn: "arn:aws:elasticloadbalancing:ap-south-1:794038231860:loadbalancer/app/Taytellar-ALB/b0d1facdd2ff6afd"
+    
     external-dns.alpha.kubernetes.io/hostname: {{ .Values.ingress.hostname }} 
     external-dns.alpha.kubernetes.io/ttl: "300"
+
 spec:
+  ingressClassName: alb  
   rules:
     - host: {{ .Values.ingress.host }}
       http:
