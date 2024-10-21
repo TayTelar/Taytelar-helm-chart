@@ -5,16 +5,13 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/group.name: taytelar-ingress-group
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    
+    # Attach the Ingress to the manually created ALB using the existing Listener ARN
+    alb.ingress.kubernetes.io/load-balancer-arn: "arn:aws:elasticloadbalancing:ap-south-1:794038231860:listener/app/Taytellar-ALB/b0d1facdd2ff6afd/5b60171293cb8b65"
     
     external-dns.alpha.kubernetes.io/hostname: {{ .Values.ingress.hostname }} 
     external-dns.alpha.kubernetes.io/ttl: "300"
-
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
 
 spec:
   ingressClassName: alb
