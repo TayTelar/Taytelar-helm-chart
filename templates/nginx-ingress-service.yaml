@@ -4,6 +4,7 @@ metadata:
   name: ingress-nginx-controller
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: nlb
+    service.beta.kubernetes.io/aws-load-balancer-scheme: external
   labels:
     app.kubernetes.io/name: taytelar-ingress
     app.kubernetes.io/instance: taytelar-ingress
