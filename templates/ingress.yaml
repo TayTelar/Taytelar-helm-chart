@@ -5,6 +5,8 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "nginx"
     external-dns.alpha.kubernetes.io/hostname: {{ .Values.ingress.hostname }}
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
 spec:
   ingressClassName: nginx
   rules:
