@@ -26,5 +26,3 @@ spec:
         - --txt-owner-id=my-hostedzone-identifier
       securityContext:
         fsGroup: 65534 
-
-        
