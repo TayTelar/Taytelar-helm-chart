@@ -8,6 +8,7 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/group.name: elk-ingress-group
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 5601}, {"HTTP": 9200}]'
+    alb.ingress.kubernetes.io/load-balancer-name: kibana-alb
 
 spec:
   ingressClassName: alb
