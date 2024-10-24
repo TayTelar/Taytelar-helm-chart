@@ -9,7 +9,6 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
     alb.ingress.kubernetes.io/load-balancer-name: taytelar-alb
     
-    # external-dns.alpha.kubernetes.io/hostname: {{ .Values.ingress.hostname }} 
     # external-dns.alpha.kubernetes.io/ttl: "300"
 
     # alb.ingress.kubernetes.io/healthcheck-path: /health
