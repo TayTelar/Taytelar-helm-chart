@@ -23,7 +23,7 @@ spec:
                   number: {{ .Values.backend.service.port }}
           - path: /
             pathType: Prefix
-            frontend:
+            backend: 
               service:
                 name: {{ .Values.frontend.service.name }}
                 port:
