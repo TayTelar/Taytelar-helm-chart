@@ -13,7 +13,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: kibana.9onfashions.com
+    - host: kibana.taytelar.com
       http:
         paths:
           - path: /

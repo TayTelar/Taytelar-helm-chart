@@ -72,8 +72,8 @@ hpa:
 ingress:
   enabled: true
   name: taytelar-ingress
-  host: dev.9onfashions.com
-  hostname: dev.9onfashions.com
+  host: dev.taytelar.com
+  hostname: dev.taytelar.com
 
 busybox:
   replicaCount: 1
