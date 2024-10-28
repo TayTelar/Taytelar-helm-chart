@@ -6,9 +6,9 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/group.name: taytelar-ingress-group
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
     alb.ingress.kubernetes.io/load-balancer-name: taytelar-alb
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/f146e05d-2a9c-4936-985d-2c227ba2ed16
+    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/f146e05d-2a9c-4936-985d-2c227ba2ed16
 spec:
   ingressClassName: alb
   rules:
