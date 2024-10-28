@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.monitoring.prometheus.name }}
+  namespace: {{ .Values.monitoring.namespace }}
+spec:
+  replicas: {{ .Values.monitoring.prometheus.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.monitoring.prometheus.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.monitoring.prometheus.name }}
+    spec:
+      containers:
+        - name: {{ .Values.monitoring.prometheus.name }}
+          image: {{ .Values.monitoring.prometheus.image }}
+          args:
+            - "--config.file=/etc/prometheus/prometheus.yml"
+          ports:
+            - containerPort: {{ .Values.monitoring.prometheus.service.port }}
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/prometheus
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ .Values.monitoring.prometheus.configMapName }}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.monitoring.prometheus.name }}
+  namespace: {{ .Values.monitoring.namespace }}
+spec:
+  selector:
+    app: {{ .Values.monitoring.prometheus.name }}
+  ports:
+    - port: {{ .Values.monitoring.prometheus.service.port }}
+      targetPort: {{ .Values.monitoring.prometheus.service.targetPort }}
+  type: {{ .Values.monitoring.prometheus.service.type }}
