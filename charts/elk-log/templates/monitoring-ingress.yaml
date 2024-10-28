@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: monitoring-ingress
-  namespace: monitoring
+  name: {{ .Values.monitoring.ingress.name }}
+  namespace: {{ .Values.monitoring.namespace}}
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
@@ -13,24 +13,24 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: prometheus.9onfashions.com
+    - host: {{ .Values.monitoring.ingress.prometheus-host }}
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: prometheus
+                name: {{ .Values.monitoring.prometheus.name }}
                 port:
-                  number: 9090
+                  number: {{ .Values.monitoring.prometheus.service.port }}
 
-    - host: grafana.9onfashions.com
+    - host: {{ .Values.monitoring.ingress.grafana-host }}
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: grafana
+                name: {{ .Values.monitoring.grafana.name }}
                 port:
-                  number: 3000
+                  number: {{ .Values.monitoring.grafana.service.port }}
