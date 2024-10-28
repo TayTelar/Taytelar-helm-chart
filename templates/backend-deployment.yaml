@@ -26,59 +26,59 @@ spec:
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: backend-secrets
+                  name: backend-external-secrets
                   key: postgres-username
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: backend-secrets
+                  name: backend-external-secrets
                   key: postgres-password
             - name: SPRING_DATA_MONGODB_URI
               value: mongodb://{{ .Values.database.mongodb.name }}:{{ .Values.database.mongodb.port }}/{{ .Values.database.mongodb.dbname }}
             - name: RAZORPAY_API_KEY_ID
               valueFrom:
                 secretKeyRef:
-                  name: backend-secrets
+                  name: backend-external-secrets
                   key: razorpay-api-key-id
             - name: RAZORPAY_API_KEY_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: backend-secrets
+                  name: backend-external-secrets
                   key: razorpay-api-key-secret
             - name: FAST2SMS_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: backend-secrets
+                  name: backend-external-secrets
                   key: fast2sms-api-id
             - name: FAST2SMS_SMS_URL
               valueFrom:
                 secretKeyRef:
-                  name: backend-secrets
+                  name: backend-external-secrets
                   key: fast2sms-api-url
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
-                  name: backend-secrets
+                  name: backend-external-secrets
                   key: aws-access-key
             - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: backend-secrets
+                  name: backend-external-secrets
                   key: aws-secret-key
             - name: AWS_BUCKET_NAME
               valueFrom:
                 secretKeyRef:
-                  name: backend-secrets
+                  name: backend-external-secrets
                   key: aws-bucket-name
             - name: GOOGLE_MAP_KEY
               valueFrom:
                 secretKeyRef:
-                  name: backend-secrets
+                  name: backend-external-secrets
                   key: google-map-api-key
             - name: GOOGLE_MAP_URL
               valueFrom:
                 secretKeyRef:
-                  name: backend-secrets
+                  name: backend-external-secrets
                   key: google-map-api-url
             - name: AWS_REGION
               value: {{ .Values.env.aws.region }}
