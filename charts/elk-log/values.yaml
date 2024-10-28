@@ -53,7 +53,7 @@ elk:
   
   ingress:
     name: elk-ingress
-    host: kibana.9onfashions.com
+    host: kibana.taytelar.com
 
 monitoring:
   namespace: monitoring
