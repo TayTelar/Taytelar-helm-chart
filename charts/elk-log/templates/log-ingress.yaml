@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: elk-ingress
+  name: {{ .Values.elk.ingress.name }}
   namespace: {{ .Values.elk.namespace }}
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
@@ -13,7 +13,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: kibana.9onfashions.com
+    - host: {{ .Values.elk.ingress.host }}
       http:
         paths:
           - path: /

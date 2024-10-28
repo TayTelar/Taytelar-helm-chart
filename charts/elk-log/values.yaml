@@ -50,6 +50,10 @@ elk:
     targetPort: 5601
     nodePort: 30228
     type: ClusterIP
+  
+  ingress:
+    name: elk-ingress
+    host: kibana.9onfashions.com
 
 monitoring:
   namespace: monitoring
