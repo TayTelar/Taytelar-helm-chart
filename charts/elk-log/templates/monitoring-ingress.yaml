@@ -13,7 +13,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: {{ .Values.monitoring.ingress.prometheus-host }}
+    - host: {{ .Values.monitoring.ingress.prometheus.host }}
       http:
         paths:
           - path: /
@@ -24,7 +24,7 @@ spec:
                 port:
                   number: {{ .Values.monitoring.prometheus.service.port }}
 
-    - host: {{ .Values.monitoring.ingress.grafana-host }}
+    - host: {{ .Values.monitoring.ingress.grafana.host }}
       http:
         paths:
           - path: /
