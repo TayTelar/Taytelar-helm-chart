@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.monitoring.grafana.name }}
   namespace: {{ .Values.monitoring.namespace }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.monitoring.grafana.replicas }}
   selector:
     matchLabels:
       app: {{ .Values.monitoring.grafana.name }}
@@ -17,7 +17,7 @@ spec:
         - name: {{ .Values.monitoring.grafana.name }}
           image: {{ .Values.monitoring.grafana.image }}
           ports:
-            - containerPort: 3000
+            - containerPort: {{ .Values.monitoring.grafana.service.port }}
 
 ---
 apiVersion: v1
