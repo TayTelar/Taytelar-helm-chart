@@ -43,6 +43,25 @@ thirdparty:
     key: test
     url: test
 
+database:
+  postgres:
+    name: postgres-service
+    image: postgres:13
+    username: test
+    password: test
+    dbname: Tay-Telar
+    port: 5432
+    enabled: true
+    storage:
+      size: 1Gi
+
+  mongodb:
+    name: mongo-service
+    image: mongo:latest
+    dbname: TayTelar
+    enabled: true
+    port: 27017
+
 hpa:
   enabled: true
   name: backend-hpa
