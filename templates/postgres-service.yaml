@@ -5,7 +5,7 @@ metadata:
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing" 
-    alb.ingress.kubernetes.io/load-balancer-name: postgres-service
+    service.beta.kubernetes.io/aws-load-balancer-name: postgres-service
 spec:
   type: LoadBalancer
   ports:
@@ -13,4 +13,4 @@ spec:
       port: {{ .Values.database.postgres.port }}
       targetPort: 5432
   selector:
-    app: {{ .Release.Name }}-postgres
+    app: postgres
