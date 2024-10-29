@@ -1,16 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-mongo
+  name: mongo
+  namespace: {{ .Values.database.namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-mongo
+      app: mongo
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-mongo
+        app: mongo
     spec:
       containers:
       - name: "{{ .Values.database.mongodb.name }}"

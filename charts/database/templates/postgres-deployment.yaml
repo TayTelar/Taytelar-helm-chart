@@ -1,16 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-postgres
+  name: postgres
+  namespace: {{ .Values.database.namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-postgres
+      app: postgres
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-postgres
+        app: postgres
     spec:
       containers:
       - name: "{{ .Values.database.postgres.name }}"
