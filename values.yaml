@@ -3,8 +3,8 @@ replicaCount: 1
 frontend:
   name: frontend
   image:
-    repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/taytelar-frontend
-    tag: latest
+    repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/taytelar-frontend:latest
+    # tag: latest
   service:
     type: ClusterIP
     name: frontend-service

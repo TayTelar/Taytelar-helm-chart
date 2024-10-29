@@ -5,7 +5,7 @@ metadata:
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"                       
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"         
-    alb.ingress.kubernetes.io/load-balancer-name: "postgres-nlb"              
+    service.beta.kubernetes.io/aws-load-balancer-name: "postgres-nlb"             
     service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"  
 spec:
   type: LoadBalancer
