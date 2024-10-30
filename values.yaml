@@ -84,3 +84,12 @@ busybox:
   volume:
     type: DirectoryOrCreate
 
+cipher:
+  secret:
+    key: taytelar-backend
+
+application:
+  security:
+    jwt:
+      secret-key: test
+      expiration: 3600
