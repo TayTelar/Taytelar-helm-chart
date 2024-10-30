@@ -83,11 +83,21 @@ spec:
             - name: AWS_REGION
               value: {{ .Values.env.aws.region }}
             - name: CIPHER_SECRET_KEY
-              value: {{ .Values.cipher.secret.key }}
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: cipher-secret-key
             - name: JWT_SECRET_KEY
-              value: {{ .Values.application.security.jwt.secret-key }}
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: jwt_secret_key
             - name: JWT_EXPIRATION
-              value: {{ .Values.application.security.jwt.expiration }}
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: jwt-expiration
+
           volumeMounts: 
             - mountPath: /var/log/pods
               name: log-volume

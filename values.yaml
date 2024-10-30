@@ -86,7 +86,7 @@ busybox:
 
 cipher:
   secret:
-    key: taytelar-backend
+    key: test
 
 application:
   security:
