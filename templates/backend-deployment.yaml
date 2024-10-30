@@ -22,7 +22,7 @@ spec:
             - containerPort: {{ .Values.backend.service.port }}
           env:
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}
+              value: jdbc:postgresql://{{ .Values.database.postgres.name }}.{{ .Values.database.namespace}}.svc.cluster.local:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -34,7 +34,7 @@ spec:
                   name: backend-secrets
                   key: postgres-password
             - name: SPRING_DATA_MONGODB_URI
-              value: mongodb://{{ .Values.database.mongodb.name }}:{{ .Values.database.mongodb.port }}/{{ .Values.database.mongodb.dbname }}
+              value: mongodb://{{ .Values.database.mongodb.name }}.{{ .Values.database.namespace}}.svc.cluster.local:{{ .Values.database.mongodb.port }}/{{ .Values.database.mongodb.dbname }}
             - name: RAZORPAY_API_KEY_ID
               valueFrom:
                 secretKeyRef:
