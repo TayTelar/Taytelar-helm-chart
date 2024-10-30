@@ -9,6 +9,16 @@ monitoring:
       port: 3000
       targetPort: 3000
       type: ClusterIP
+    datasources:
+      datasource.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Prometheus
+            type: prometheus
+            access: proxy
+           # url: http://{{ .Values.monitoring.prometheus.name }}.{{ .Values.monitoring.namespace }}.svc.cluster.local:{{ .Values.monitoring.prometheus.service.port }}
+            url: http://prometheus-service:9090
+            isDefault: true
 
   prometheus:
     image: "prom/prometheus:latest"
