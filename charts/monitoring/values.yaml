@@ -40,3 +40,5 @@ monitoring:
       host: grafana.taytelar.com
     prometheus:
       host: prometheus.taytelar.com
+backend:
+  namespace: taytelar-ns
