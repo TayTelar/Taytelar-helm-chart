@@ -16,6 +16,7 @@ spec:
       - name: ecr-secret
       containers:
       - name: {{ .Values.frontend.name }}
-        image: {{ .Values.frontend.image.repository }}
+        image: {{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}
+        imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.frontend.service.port }}
