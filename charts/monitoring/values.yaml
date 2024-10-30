@@ -42,3 +42,5 @@ monitoring:
       host: prometheus.taytelar.com
 backend:
   namespace: taytelar-ns
+  name: backend
+  metricsPortName: 8081
