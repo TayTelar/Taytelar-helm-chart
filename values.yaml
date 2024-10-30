@@ -91,5 +91,6 @@ cipher:
 application:
   security:
     jwt:
-      secret-key: test
+      secret:
+        key: test
       expiration: 3600
