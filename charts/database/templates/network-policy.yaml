@@ -1,12 +1,12 @@
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: allow-taytelar-ns-access
-  namespace: database
-spec:
-  podSelector: {}
-  ingress:
-  - from:
-    - namespaceSelector:
-        matchLabels:
-          name: taytelar-ns
+# apiVersion: networking.k8s.io/v1
+# kind: NetworkPolicy
+# metadata:
+#   name: allow-taytelar-ns-access
+#   namespace: database
+# spec:
+#   podSelector: {}
+#   ingress:
+#   - from:
+#     - namespaceSelector:
+#         matchLabels:
+#           name: taytelar-ns
