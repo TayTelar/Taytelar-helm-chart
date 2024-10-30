@@ -82,6 +82,12 @@ spec:
                   key: google-map-api-url
             - name: AWS_REGION
               value: {{ .Values.env.aws.region }}
+            - name: CIPHER_SECRET_KEY
+              value: {{ .Values.cipher.secret.key }}
+            - name: JWT_SECRET_KEY
+              value: {{ .Values.application.security.jwt.secret-key }}
+            - name: JWT_EXPIRATION
+              value: {{ .Values.application.security.jwt.expiration }}
           volumeMounts: 
             - mountPath: /var/log/pods
               name: log-volume
