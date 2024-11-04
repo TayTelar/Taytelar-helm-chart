@@ -93,10 +93,7 @@ spec:
                   name: backend-secrets
                   key: jwt_secret_key
             - name: JWT_EXPIRATION
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secrets
-                  key: jwt-expiration
+              value: 3600
 
           volumeMounts: 
             - mountPath: /var/log/pods
