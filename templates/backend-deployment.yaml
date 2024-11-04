@@ -35,6 +35,19 @@ spec:
                   key: postgres-password
             - name: SPRING_DATA_MONGODB_URI
               value: mongodb://{{ .Values.database.mongodb.name }}:{{ .Values.database.mongodb.port }}/{{ .Values.database.mongodb.dbname }}
+
+            - name: MAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: mail-user
+                  
+            - name: MAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: mail-password
+
             - name: RAZORPAY_API_KEY_ID
               valueFrom:
                 secretKeyRef:
