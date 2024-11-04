@@ -64,4 +64,32 @@ database:
     image: mongo:latest
     dbname: TayTelar
     enabled: true
-    port: 270
+    port: 27017
+
+hpa:
+  enabled: true
+  name: backend-hpa
+  minReplicas: 1
+  maxReplicas: 20
+  targetCPUUtilizationPercentage: 80
+ingress:
+  enabled: true
+  name: taytelar-ingress
+  host: dev.taytelar.com
+busybox:
+  replicaCount: 1
+  image:
+    repository: busybox
+  volumeMount:
+    path: /var/log/pods
+  volume:
+    type: DirectoryOrCreate
+cipher:
+  secret:
+    key: test
+application:
+  security:
+    jwt:
+      secret:
+        key: test
+      expiration: 3600
