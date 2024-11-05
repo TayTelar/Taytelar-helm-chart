@@ -22,7 +22,7 @@ spec:
             - containerPort: {{ .Values.backend.service.port }}
           env:
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://{{ .Values.database.postgres.name }}.{{ .Values.database.namespace}}.svc.cluster.local:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}
+              value: jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -34,7 +34,20 @@ spec:
                   name: backend-secrets
                   key: postgres-password
             - name: SPRING_DATA_MONGODB_URI
-              value: mongodb://{{ .Values.database.mongodb.name }}.{{ .Values.database.namespace}}.svc.cluster.local:{{ .Values.database.mongodb.port }}/{{ .Values.database.mongodb.dbname }}
+              value: mongodb://{{ .Values.database.mongodb.name }}:{{ .Values.database.mongodb.port }}/{{ .Values.database.mongodb.dbname }}
+
+            - name: MAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: mail-user
+                  
+            - name: MAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: mail-password
+
             - name: RAZORPAY_API_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -82,6 +95,19 @@ spec:
                   key: google-map-api-url
             - name: AWS_REGION
               value: {{ .Values.env.aws.region }}
+            - name: CIPHER_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: cipher-secret-key
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: jwt_secret_key
+            - name: JWT_EXPIRATION
+              value: "3600"
+
           volumeMounts: 
             - mountPath: /var/log/pods
               name: log-volume
