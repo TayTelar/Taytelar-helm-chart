@@ -15,7 +15,7 @@ spec:
       containers:
         - name: log-logger
           image: {{ .Values.busybox.image.repository }}
-          command: "sh -c 'tail -f /var/log/pods/taytelar-ns_backend-*/backend/*.log'"
+          command: ['sh', '-c', 'tail -f /var/log/pods/taytelar-ns_backend-*/backend/*.log || echo "No log files found"']
           volumeMounts: 
             - mountPath: {{ .Values.busybox.volumeMount.path }}
               name: log-volume
@@ -23,4 +23,4 @@ spec:
         - name: log-volume
           hostPath:
             path: /var/log/pods/
-            type: DirectoryOrCreate
+            type: DirectoryOrCreate # or adjust based on your requirements
