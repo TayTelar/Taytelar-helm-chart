@@ -17,7 +17,7 @@ spec:
       containers:
         - name: {{ .Values.backend.name }}
           image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
-          imagePullPolicy: {{ .Values.backend.pullPolicy }}
+          imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.backend.service.port }}
           env:
