@@ -22,7 +22,7 @@ spec:
             - containerPort: {{ .Values.backend.service.port }}
           env:
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}
+              value: jdbc:postgresql://{{ .Values.database.postgres.name }}.database:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
