@@ -3,8 +3,9 @@ replicaCount: 1
 frontend:
   name: frontend
   image:
-    repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/taytelar-frontend:latest
-    # tag: latest
+    repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/taytelar-frontend
+    tag: latest
+    pullPolicy: Always
   service:
     type: ClusterIP
     name: frontend-service
@@ -16,6 +17,7 @@ backend:
   image:
     repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/taytelar-backend
     tag: latest
+    pullPolicy: Always
   service:
     type: ClusterIP
     name: backend-service
@@ -23,7 +25,6 @@ backend:
     targetPort: 8081
   spring:
     profile: dev
-  pullPolicy: IfNotPresent
 
 env:
   aws:
@@ -42,9 +43,11 @@ thirdparty:
   google_maps_api:
     key: test
     url: test
+  mail:
+    user: test
+    password: test
 
 database:
-  namespace: database
   postgres:
     name: postgres-service
     image: postgres:13
@@ -69,12 +72,10 @@ hpa:
   minReplicas: 1
   maxReplicas: 20
   targetCPUUtilizationPercentage: 80
-
 ingress:
   enabled: true
   name: taytelar-ingress
   host: dev.taytelar.com
-
 busybox:
   replicaCount: 1
   image:
@@ -83,4 +84,12 @@ busybox:
     path: /var/log/pods
   volume:
     type: DirectoryOrCreate
-
+cipher:
+  secret:
+    key: test
+application:
+  security:
+    jwt:
+      secret:
+        key: test
+      expiration: 3600
