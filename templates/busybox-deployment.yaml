@@ -22,5 +22,6 @@ spec:
       volumes:
         - name: log-volume
           hostPath:
-            path: /var/log/pods/
-            type: DirectoryOrCreate # or adjust based on your requirements
+            path: /var/log/pods
+            type: DirectoryOrCreate 
+            

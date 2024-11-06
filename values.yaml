@@ -81,7 +81,7 @@ busybox:
   image:
     repository: busybox
   volumeMount:
-    path: /var/log/pods/
+    path: /var/log/pods
   volume:
     type: DirectoryOrCreate
 cipher:

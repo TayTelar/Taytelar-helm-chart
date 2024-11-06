@@ -106,7 +106,7 @@ spec:
               value: "3600"
 
           volumeMounts:
-            - mountPath: /var/log/pods/
+            - mountPath: /var/log/pods
               name: log-volume
           resources:
             requests:
@@ -118,5 +118,5 @@ spec:
       volumes:
         - name: log-volume
           hostPath:
-            path: /var/log/pods/
+            path: /var/log/pods
             type: DirectoryOrCreate
