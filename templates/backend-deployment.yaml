@@ -105,6 +105,12 @@ spec:
             - name: JWT_EXPIRATION
               value: "3600"
 
+            - name: REFRESH_TOKEN_EXPIRATION
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: refresh-token-expiration
+
           volumeMounts:
             - mountPath: /var/log/pods
               name: log-volume
