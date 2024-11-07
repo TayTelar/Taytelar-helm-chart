@@ -92,5 +92,5 @@ application:
     jwt:
       secret:
         key: test
-      expiration: 3600
+      expiration: test
       refresh_token_expiration: test
