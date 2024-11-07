@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: {{ .Values.elk.filebeat.name }}
   namespace: {{ .Values.elk.namespace }}
