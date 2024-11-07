@@ -28,13 +28,13 @@ spec:
         - name: config
           mountPath: /usr/share/filebeat/filebeat.yml
           subPath: filebeat.yml
-        - name: logs
+        - name: log-volume
           mountPath: /var/log/pods
       volumes:
       - name: config
         configMap:
           name: filebeat-config
-      - name: logs
+      - name: log-volume
         hostPath:
           path: /var/log/pods
           type: DirectoryOrCreate
