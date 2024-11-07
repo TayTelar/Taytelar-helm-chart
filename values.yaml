@@ -93,4 +93,4 @@ application:
       secret:
         key: test
       expiration: 3600
-      refresh-token-expiration: test
+      refresh_token_expiration: test
