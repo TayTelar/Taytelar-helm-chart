@@ -121,9 +121,9 @@ spec:
                   name: backend-secrets
                   key: jwt_secret_key
             - name: JWT_EXPIRATION
-              value: {{ .Values.application.security.jwt.expiration }}
+              value: 3600000
             - name: REFRESH_TOKEN_EXPIRATION
-              value: {{ .Values.application.security.jwt.refresh_token_expiration}}
+              value: 86400000
 
           volumeMounts:
             - mountPath: /var/log/pods
