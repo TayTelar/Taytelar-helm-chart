@@ -25,18 +25,18 @@ spec:
           imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.backend.service.port }}
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: {{ .Values.backend.service.port }}
-            initialDelaySeconds: 5
-            periodSeconds: 5
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: {{ .Values.backend.service.port }}
-            initialDelaySeconds: 15
-            periodSeconds: 10
+          # readinessProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: {{ .Values.backend.service.port }}
+          #   initialDelaySeconds: 30
+          #   periodSeconds: 10
+          # livenessProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: {{ .Values.backend.service.port }}
+          #   initialDelaySeconds: 45
+          #   periodSeconds: 10
           env:
             - name: SPRING_DATASOURCE_URL
               value: "jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}"
@@ -114,19 +114,16 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: cipher-secret-key
+
             - name: JWT_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
                   key: jwt_secret_key
             - name: JWT_EXPIRATION
-              value: "3600"
-
+              value: "3600000"
             - name: REFRESH_TOKEN_EXPIRATION
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secrets
-                  key: refresh-token-expiration
+              value: "86400000"
 
           volumeMounts:
             - mountPath: /var/log/pods
