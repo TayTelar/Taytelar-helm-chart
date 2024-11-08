@@ -114,19 +114,16 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: cipher-secret-key
+
             - name: JWT_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
                   key: jwt_secret_key
             - name: JWT_EXPIRATION
-              value: "3600"
-
+              value: {{ .Values.application.security.jwt.expiration }}
             - name: REFRESH_TOKEN_EXPIRATION
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secrets
-                  key: refresh-token-expiration
+              value: {{ .Values.application.security.jwt.refresh_token_expiration}}
 
           volumeMounts:
             - mountPath: /var/log/pods
