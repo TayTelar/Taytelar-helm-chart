@@ -114,7 +114,7 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: cipher-secret-key
-
+            # JWT 
             - name: JWT_SECRET_KEY
               valueFrom:
                 secretKeyRef:
@@ -124,6 +124,20 @@ spec:
               value: "3600000"
             - name: REFRESH_TOKEN_EXPIRATION
               value: "86400000"
+            
+            # Redis 
+            - name: REDIS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: redis-host
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: redis-password
+            - name: REDIS_PORT
+              value: {{ .Values.database.redis.port }}
 
           volumeMounts:
             - mountPath: /var/log/pods

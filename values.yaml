@@ -66,6 +66,11 @@ database:
     enabled: true
     port: 27017
 
+  redis:
+    host: test
+    password: test
+    port: 15948
+    
 hpa:
   enabled: true
   name: backend-hpa
