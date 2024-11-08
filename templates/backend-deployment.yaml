@@ -29,13 +29,13 @@ spec:
             httpGet:
               path: /health
               port: {{ .Values.backend.service.port }}
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            initialDelaySeconds: 30
+            periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /health
               port: {{ .Values.backend.service.port }}
-            initialDelaySeconds: 15
+            initialDelaySeconds: 45
             periodSeconds: 10
           env:
             - name: SPRING_DATASOURCE_URL
