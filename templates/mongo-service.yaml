@@ -8,5 +8,5 @@ spec:
     protocol: TCP
     targetPort: 27017
   selector:
-    app: {{ .Release.Name }}-mongo
+    app: mongo
   type: ClusterIP
