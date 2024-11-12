@@ -137,7 +137,7 @@ spec:
                   name: backend-secrets
                   key: redis-password
             - name: REDIS_PORT
-              value: 15948
+              value: "15948"
 
           volumeMounts:
             - mountPath: /var/log/pods
