@@ -9,6 +9,8 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
     alb.ingress.kubernetes.io/load-balancer-name: taytelar-alb
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/000defad-641e-48cd-ba35-eff13cdd7f39
+    alb.ingress.kubernetes.io/idle-timeout.timeout: "3600"
+    
 spec:
   ingressClassName: alb
   rules:
