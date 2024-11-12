@@ -8,6 +8,6 @@ spec:
     app: redis
   ports:
     - protocol: TCP
-      port: 6379
-      targetPort: 6379
+      port: 15948
+      targetPort: 15948
   clusterIP: None
