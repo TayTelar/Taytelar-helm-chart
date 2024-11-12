@@ -108,24 +108,24 @@ spec:
                   name: backend-secrets
                   key: google-map-api-url
             - name: AWS_REGION
-              value: {{ .Values.env.aws.region }}
+              value: "{{ .Values.env.aws.region }}"
             - name: CIPHER_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
                   key: cipher-secret-key
-            # JWT 
+            # JWT
             - name: JWT_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
                   key: jwt_secret_key
             - name: JWT_EXPIRATION
-              value: "3600000"
+              value: "3600000"  
             - name: REFRESH_TOKEN_EXPIRATION
-              value: "86400000"
+              value: "86400000"  
             
-            # Redis 
+            # Redis
             - name: REDIS_HOST
               valueFrom:
                 secretKeyRef:
@@ -137,7 +137,7 @@ spec:
                   name: backend-secrets
                   key: redis-password
             - name: REDIS_PORT
-              value: "{{ .Values.database.redis.port | quote }}" 
+              value: "{{ .Values.database.redis.port | quote }}"  
 
           volumeMounts:
             - mountPath: /var/log/pods
