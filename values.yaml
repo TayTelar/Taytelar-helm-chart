@@ -8,7 +8,7 @@ frontend:
     pullPolicy: Always
   service:
     type: ClusterIP
-    name: frontend-service
+    name: frontend
     port: 80
     targetPort: 80
 
@@ -20,7 +20,7 @@ backend:
     pullPolicy: Always
   service:
     type: ClusterIP
-    name: backend-service
+    name: backend
     port: 8081
     targetPort: 8081
   spring:
