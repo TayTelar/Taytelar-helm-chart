@@ -25,18 +25,18 @@ spec:
           imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.backend.service.port }}
-          # readinessProbe:
-          #   httpGet:
-          #     path: /health
-          #     port: {{ .Values.backend.service.port }}
-          #   initialDelaySeconds: 30
-          #   periodSeconds: 10
-          # livenessProbe:
-          #   httpGet:
-          #     path: /health
-          #     port: {{ .Values.backend.service.port }}
-          #   initialDelaySeconds: 45
-          #   periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: {{ .Values.backend.service.port }}
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: {{ .Values.backend.service.port }}
+            initialDelaySeconds: 45
+            periodSeconds: 10
           env:
             - name: SPRING_DATASOURCE_URL
               value: "jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}"

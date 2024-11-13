@@ -9,6 +9,7 @@ metadata:
     alb.ingress.kubernetes.io/group.name: elk-ingress-group
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 5601}, {"HTTP": 9200}]'
     alb.ingress.kubernetes.io/load-balancer-name: kibana-alb
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/000defad-641e-48cd-ba35-eff13cdd7f39
 
 spec:
   ingressClassName: alb
