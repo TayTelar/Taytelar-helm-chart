@@ -10,4 +10,4 @@ spec:
     - protocol: TCP
       port: {{ .Values.database.redis.port }}
       targetPort: 15948
-  clusterIP: None
+  type: ClusterIP
