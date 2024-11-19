@@ -68,7 +68,7 @@ database:
 
   redis:
     host: redis-service
-    port: 15948
+    port: 6379
     password: test
 
 hpa:
