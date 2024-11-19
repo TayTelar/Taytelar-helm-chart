@@ -128,17 +128,14 @@ spec:
             
             # Redis
             - name: REDIS_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secrets
-                  key: redis-host
+              value: {{ .Values.database.redis.host }}
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
                   key: redis-password
             - name: REDIS_PORT
-              value: "15948"
+              value: {{ .Values.database.redis.port }}
 
           volumeMounts:
             - mountPath: /var/log/pods

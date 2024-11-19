@@ -67,10 +67,10 @@ database:
     port: 27017
 
   redis:
-    host: test
-    password: test
+    host: redis-service
     port: 15948
-    
+    password: test
+
 hpa:
   enabled: true
   name: backend-hpa

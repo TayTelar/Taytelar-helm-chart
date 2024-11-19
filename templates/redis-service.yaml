@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.database.redis.host }}
+  namespace: taytelar-ns
+spec:
+  selector:
+    app: redis
+  ports:
+    - protocol: TCP
+      port: {{ .Values.database.redis.port }}
+      targetPort: 15948
+  clusterIP: None
