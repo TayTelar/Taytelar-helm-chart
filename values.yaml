@@ -32,6 +32,7 @@ env:
     access_key: test
     secret_key: test
     bucketName: test
+    reviewbucket: test
 
 thirdparty:
   razopay_api:

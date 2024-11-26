@@ -98,6 +98,12 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: aws-bucket-name
+            - name: AWS_REVIEW_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: aws-review-bucket
+
             - name: GOOGLE_MAP_KEY
               valueFrom:
                 secretKeyRef:
