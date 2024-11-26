@@ -14,7 +14,7 @@ frontend:
 
 backend:
   name: backend
-  image:
+  image:         
     repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/taytelar-backend
     tag: latest
     pullPolicy: Always
