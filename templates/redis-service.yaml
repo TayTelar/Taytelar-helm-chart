@@ -8,6 +8,6 @@ spec:
     app: redis
   ports:
     - protocol: TCP
-      port: "{{ .Values.database.redis.port | default 6379 }}"
+      port: {{ .Values.database.redis.port }}
       targetPort: 6379
   type: ClusterIP
