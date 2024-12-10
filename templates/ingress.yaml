@@ -6,15 +6,14 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/group.name: taytelar-ingress-group
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTP":443}]'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTP": 443}]'  # Ensure this is a string
     alb.ingress.kubernetes.io/load-balancer-name: taytelar-alb
     alb.ingress.kubernetes.io/healthcheck-path: /health
-    alb.ingress.kubernetes.io/healthcheck-interval-seconds: 30
-    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: 5
-    alb.ingress.kubernetes.io/healthy-threshold: 3
-    alb.ingress.kubernetes.io/unhealthy-threshold: 2
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: "30"  # Ensure values are strings
+    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: "5"
+    alb.ingress.kubernetes.io/healthy-threshold: "3"
+    alb.ingress.kubernetes.io/unhealthy-threshold: "2"
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/a8ded5d4-3539-43a5-a8cf-532daf5e8c44
-
 
 spec:
   ingressClassName: alb
@@ -31,7 +30,7 @@ spec:
                   number: {{ .Values.backend.service.port }}
           - path: /
             pathType: Prefix
-            backend: 
+            backend:
               service:
                 name: {{ .Values.frontend.service.name }}
                 port:
