@@ -38,6 +38,7 @@ thirdparty:
   razopay_api:
     id: test
     secret: test
+    x_account_number: test
   fastsms_api:
     id: test
     url: test
