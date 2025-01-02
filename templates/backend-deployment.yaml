@@ -73,6 +73,11 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: razorpay-api-key-secret
+            - name: RAZORPAY_X_ACCOUNT_NUMBER
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: razorpay-x-account-number
             - name: FAST2SMS_API_KEY
               valueFrom:
                 secretKeyRef:
