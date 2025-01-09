@@ -39,6 +39,8 @@ spec:
           #   initialDelaySeconds: 45
             # periodSeconds: 10
           env:
+            - name: ENVIRONMENT
+              value: {{ .Values.env.app.spring }}
             - name: SPRING_DATASOURCE_URL
               value: "jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}"
             - name: DB_USERNAME
