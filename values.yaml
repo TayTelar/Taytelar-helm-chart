@@ -27,6 +27,8 @@ backend:
     profile: dev
 
 env:
+  app: 
+    spring: test
   aws:
     region: ap-south-1
     access_key: test
