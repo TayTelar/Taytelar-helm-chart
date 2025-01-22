@@ -101,5 +101,9 @@ application:
     jwt:
       secret:
         key: test
+        
+logo:
+  image:
+    url: test
 
 
