@@ -150,6 +150,10 @@ spec:
             - name: REDIS_PORT
               value: "{{ .Values.database.redis.port }}"
 
+            #Logo
+            - name: LOGO_URL
+              value: "{{ .Values.logo.image.url }}"
+
           volumeMounts:
             - mountPath: /var/log/pods
               name: log-volume
