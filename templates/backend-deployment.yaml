@@ -154,6 +154,10 @@ spec:
             - name: LOGO_URL
               value: "{{ .Values.logo.image.url }}"
 
+            #MAIL
+            - name: MAIL_ADDRESS
+              value: "{{ .Values.env.mail.to.username }}"
+
           volumeMounts:
             - mountPath: /var/log/pods
               name: log-volume
