@@ -29,6 +29,9 @@ backend:
 env:
   app: 
     spring: test
+  mail:
+    to:
+      username: test
   aws:
     region: ap-south-1
     access_key: test
@@ -100,8 +103,7 @@ application:
   security:
     jwt:
       secret:
-        key: test
-        
+        key: test     
 logo:
   image:
     url: test
