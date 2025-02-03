@@ -137,7 +137,14 @@ spec:
             - name: JWT_EXPIRATION
               value: "3600000"  
             - name: REFRESH_TOKEN_EXPIRATION
-              value: "86400000"  
+              value: "86400000"
+            - name: TOKEN_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: jwt_token_secret_key
+            - name: TOKEN_EXPIRATION
+              value: "172800000"
             
             # Redis
             - name: REDIS_HOST
