@@ -103,7 +103,10 @@ application:
   security:
     jwt:
       secret:
-        key: test     
+        key: test 
+    token:
+      secret:
+        key: test
 logo:
   image:
     url: test
