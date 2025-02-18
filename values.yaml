@@ -56,13 +56,13 @@ thirdparty:
 
   #marketing
   imap:
-   host: "imap.gmail.com"
+   host: test
    port: 993
    username: test
    password: test
    
   smtp:
-    host: "smtp.gmail.com"
+    host: test
     port: 587
     username: test
     password: test
