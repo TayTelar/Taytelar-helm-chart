@@ -55,17 +55,17 @@ thirdparty:
     password: test
 
   #marketing
-  imap:
-   host: test
-   port: 993
-   username: test
-   password: test
+imap:
+  host: test
+  port: 993
+  username: test
+  password: test
    
-  smtp:
-    host: test
-    port: 587
-    username: test
-    password: test
+smtp:
+  host: test
+  port: 587
+  username: test
+  password: test
 
 database:
   postgres:
