@@ -101,9 +101,10 @@ hpa:
 ingress:
   enabled: true
   name: taytelar-ingress
-  marketing-name: taytelar-ingress
-  host: dev.taytelar.com
-  marketing-host: marketing.seabed2crest.com
+  marketing:
+    name: taytelar-ingress
+    host: dev.taytelar.com
+    marketing-host: marketing.seabed2crest.com
 busybox:
   replicaCount: 1
   image:

@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Values.ingress.marketing-name }}
+  name: {{ .Values.ingress.marketing.name }}
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
@@ -13,7 +13,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: {{ .Values.ingress.marketing-host }}
+    - host: {{ .Values.ingress.marketing.host }}
       http:
         paths:
           - path: /api
