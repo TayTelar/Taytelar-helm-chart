@@ -1,0 +1,105 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.marketing.backend.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.marketing.backend.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.marketing.backend.name }}
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret
+      containers:
+        - name: {{ .Values.marketing.backend.name }}
+          image: {{ .Values.marketing.image.repository }}:{{ .Values.marketing.image.tag }}
+          imagePullPolicy: {{ .Values.marketing.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.marketing.service.port }}
+
+          env:
+            # Application Environment
+            - name: ENVIRONMENT
+              value: {{ .Values.env.app.spring }}
+
+            # Database Configuration
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.marketing-dbname }}"
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: postgres-username
+            - name: DB_PASSWORD 
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: postgres-password
+
+            # AWS Configuration
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: aws-access-key
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: aws-secret-key
+            - name: AWS_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: aws-bucket-name
+            - name: AWS_REGION
+              value: "{{ .Values.env.aws.region }}"
+
+            # Security Keys
+            - name: CIPHER_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: cipher-secret-key
+
+            - name: SMTP_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-secrets
+                  key: SMTP_HOST
+            - name: SMTP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: SMTP_USERNAME
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: SMTP_PASSWORD
+            
+            #imap creds 
+            - name: IMAP_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-secrets
+                  key: IMAP_HOST
+            - name: IMAP_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-secrets
+                  key: IMAP_USERNAME
+            - name: IMAP_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-secrets
+                  key: IMAP_PASSWORD

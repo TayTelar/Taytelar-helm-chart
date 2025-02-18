@@ -6,6 +6,7 @@ data:
   application.properties: |
     server.port = 8081
     spring.datasource.url=jdbc:postgresql://postgres-service:5432/Tay-Telar
+    spring.datasource.url=jdbc:postgresql://postgres-service:5432/dm-email
     spring.datasource.username=postgres
     spring.datasource.password={{ .Values.database.postgres.passwordSecret }}
     spring.datasource.driver-class-name=org.postgresql.Driver
