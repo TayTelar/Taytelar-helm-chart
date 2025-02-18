@@ -33,7 +33,7 @@ spec:
 
             # Database Configuration
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.marketing-dbname }}"
+              value: "jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.marketing.dbname }}"
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:

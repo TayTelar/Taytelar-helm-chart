@@ -74,7 +74,8 @@ database:
     username: test
     password: test
     dbname: Tay-Telar
-    marketing-dbname: dm-email 
+    marketing:
+      dbname: dm-email 
     port: 5432
     enabled: true
     storage:
@@ -104,7 +105,8 @@ ingress:
   marketing:
     name: taytelar-ingress
     host: dev.taytelar.com
-    marketing-host: marketing.seabed2crest.com
+    marketing:
+      host: marketing.seabed2crest.com
 busybox:
   replicaCount: 1
   image:
