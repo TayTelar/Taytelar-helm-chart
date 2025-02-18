@@ -131,7 +131,7 @@ marketing:
   backend:
     name: marketing-backend
   image:         
-    repository: 
+    repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/marketing-backend-service
     tag: latest
     pullPolicy: Always
   service:
