@@ -38,6 +38,7 @@ env:
     secret_key: test
     bucketName: test
     reviewbucket: test
+    marketingbucket: test
 
 thirdparty:
   razopay_api:
@@ -53,6 +54,10 @@ thirdparty:
   mail:
     user: test
     password: test
+  falcon:
+    key: test
+    url: test
+    domain: test
 
   #marketing
 imap:

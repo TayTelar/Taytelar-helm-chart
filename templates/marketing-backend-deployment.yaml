@@ -60,7 +60,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
-                  key: aws-bucket-name
+                  key: aws-marketing-bucket
             - name: AWS_REGION
               value: "{{ .Values.env.aws.region }}"
 
@@ -103,3 +103,21 @@ spec:
                 configMapKeyRef:
                   name: backend-secrets
                   key: IMAP_PASSWORD
+                  
+            #falcon creds
+            - name: FALCON_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: FALCON_KEY
+            - name: FALCON_URL
+              valueFrom:
+              secretKeyRef:
+                  name: backend-secrets
+                  key: FALCON_URL
+            - name: FALCON_DOMAIN
+              valueFrom:
+              secretKeyRef:
+                  name: backend-secrets
+                  key: FALCON_DOMAIN
+              
