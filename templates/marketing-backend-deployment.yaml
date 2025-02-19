@@ -75,49 +75,48 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: backend-secrets
-                  key: SMTP_HOST
+                  key: smtp-host
             - name: SMTP_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
-                  key: SMTP_USERNAME
+                  key: smtp-username
             - name: SMTP_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
-                  key: SMTP_PASSWORD
+                  key: smtp-password
             
             #imap creds 
             - name: IMAP_HOST
               valueFrom:
                 configMapKeyRef:
                   name: backend-secrets
-                  key: IMAP_HOST
+                  key: imap-host
             - name: IMAP_USERNAME
               valueFrom:
                 configMapKeyRef:
                   name: backend-secrets
-                  key: IMAP_USERNAME
+                  key: imap-username
             - name: IMAP_PASSWORD
               valueFrom:
                 configMapKeyRef:
                   name: backend-secrets
-                  key: IMAP_PASSWORD
-                  
+                  key: imap-password
             #falcon creds
             - name: FALCON_KEY
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
-                  key: FALCON_KEY
+                  key: falcon-key
             - name: FALCON_URL
               valueFrom:
               secretKeyRef:
                   name: backend-secrets
-                  key: FALCON_URL
+                  key: falcon-url
             - name: FALCON_DOMAIN
               valueFrom:
               secretKeyRef:
                   name: backend-secrets
-                  key: FALCON_DOMAIN
+                  key: falcon-domain
               
