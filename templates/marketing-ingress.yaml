@@ -16,7 +16,7 @@ spec:
     - host: {{ .Values.marketing.ingress.host }}
       http:
         paths:
-          - path: /api/marketing
+          - path: /api
             pathType: Prefix
             backend:
               service:
