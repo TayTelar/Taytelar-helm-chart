@@ -107,11 +107,7 @@ hpa:
 ingress:
   enabled: true
   name: taytelar-ingress
-  marketing:
-    name: taytelar-ingress
-    host: dev.taytelar.com
-    marketing:
-      host: marketing.seabed2crest.com
+  host: dev.taytelar.com
 busybox:
   replicaCount: 1
   image:
@@ -147,3 +143,7 @@ marketing:
     name: marketing-backend
     port: 8084
     targetPort: 8084
+  ingress:
+  enabled: true
+  name: marketing-ingress
+  host: marketing.seabed2crest.com
