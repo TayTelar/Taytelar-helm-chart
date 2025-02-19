@@ -8,7 +8,7 @@ metadata:
     alb.ingress.kubernetes.io/group.name: marketing-ingress-group
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'  
     alb.ingress.kubernetes.io/load-balancer-name: marketing-alb
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/a8ded5d4-3539-43a5-a8cf-532daf5e8c44
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/ad32fe8a-3914-4004-8a76-a90bcd19fed0
 
 spec:
   ingressClassName: alb
