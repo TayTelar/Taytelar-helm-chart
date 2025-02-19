@@ -144,6 +144,6 @@ marketing:
     port: 8084
     targetPort: 8084
   ingress:
-  enabled: true
-  name: marketing-ingress
-  host: marketing.seabed2crest.com
+    enabled: true
+    name: marketing-ingress
+    host: marketing.seabed2crest.com
