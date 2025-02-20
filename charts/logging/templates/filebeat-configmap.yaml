@@ -12,9 +12,16 @@ data:
       enabled: true
       paths:
         - /var/log/pods/taytelar-ns_backend-*/backend/*.log
+      fields:
+        app: taytelar-backend
+      fields_under_root: true
+
+    - type: log
+      enabled: true
+      paths:
         - /var/log/pods/taytelar-ns_marketing-backend-*/marketing-backend/*.log
       fields:
-        app: backend
+        app: marketing-backend
       fields_under_root: true
 
     output.logstash:
