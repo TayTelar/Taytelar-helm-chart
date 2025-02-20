@@ -12,6 +12,7 @@ data:
       enabled: true
       paths:
         - /var/log/pods/taytelar-ns_backend-*/backend/*.log
+        - /var/log/pods/taytelar-ns_marketing-backend-*/marketing-backend/*.log
       fields:
         app: backend
       fields_under_root: true
