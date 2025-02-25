@@ -120,8 +120,8 @@ spec:
               secretKeyRef:
                   name: backend-secrets
                   key: falcon-domain
-            - name: 
-              valueFrom: MARKETING_JWT_SECRET
-              secretKeyRef:
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
                   name: backend-secrets
-                  key: marketing-jwtsecret
+                  key: jwt_secret_key

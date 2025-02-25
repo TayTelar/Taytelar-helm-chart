@@ -72,9 +72,6 @@ smtp:
   username: test
   password: test
 
-marketing:
- jwtsecret: test
-
 database:
   postgres:
     name: postgres-service
