@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard
+  namespace: kubernetes-dashboard
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: k8s-dash-alb-ingress-group
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 8443}]'  
+    alb.ingress.kubernetes.io/load-balancer-name: k8s-dash-alb
+spec:
+  ingressClassName: alb
+  rules:
+  - host: dashboard.taytelar.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kubernetes-dashboard-kong-proxy
+            port:
+              number: 443
