@@ -7,7 +7,7 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/group.name: k8s-dash-alb-ingress-group
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 8443}]'  
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 443}]'  
     alb.ingress.kubernetes.io/load-balancer-name: k8s-dash-alb
 spec:
   ingressClassName: alb
