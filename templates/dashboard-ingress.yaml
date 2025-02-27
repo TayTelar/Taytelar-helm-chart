@@ -20,9 +20,9 @@ spec:
       paths:
       - backend:
           service:
-            name: kubernetes-dashboard-kong-proxy  # Corrected Service Name
+            name: kubernetes-dashboard  # Corrected Service Name
             port:
-              number: 8443  # Corrected Port
+              number: 443  # Corrected Port
         path: /
         pathType: Prefix
 status:
