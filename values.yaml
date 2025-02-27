@@ -146,4 +146,4 @@ marketing:
   ingress:
     enabled: true
     name: marketing-ingress
-    host: marketing.seabed2crest.com
+    host: dev.campaigns.seabed2crest.com
