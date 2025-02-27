@@ -1,31 +1,29 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/a8ded5d4-3539-43a5-a8cf-532daf5e8c44
-    alb.ingress.kubernetes.io/group.name: k8s-dash-alb-ingress-group
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 443}]'
-    alb.ingress.kubernetes.io/load-balancer-name: k8s-dash-1515184234  # Ensure correct ALB is used
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    meta.helm.sh/release-name: taytelar-application
-    meta.helm.sh/release-namespace: kubernetes-dashboard
   name: kubernetes-dashboard
   namespace: kubernetes-dashboard
+  annotations:
+    alb.ingress.kubernetes.io/group.name: k8s-dash-alb-ingress-group
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/load-balancer-name: k8s-dash
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/healthcheck-port: "443"
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTPS
+    alb.ingress.kubernetes.io/backend-protocol: HTTPS
+    meta.helm.sh/release-namespace: kubernetes-dashboard
 spec:
   ingressClassName: alb
   rules:
   - host: dashboard.taytelar.com
     http:
       paths:
-      - backend:
-          service:
-            name: kubernetes-dashboard  # Corrected Service Name
-            port:
-              number: 443  # Corrected Port
-        path: /
+      - path: /
         pathType: Prefix
-status:
-  loadBalancer:
-    ingress:
-    - hostname: k8s-dash-1515184234.ap-south-1.elb.amazonaws.com  # Updated ALB
+        backend:
+          service:
+            name: kubernetes-dashboard-kong-proxy
+            port:
+              number: 443
