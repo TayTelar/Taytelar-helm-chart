@@ -27,6 +27,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.campaign.service.name }}
+                name: {{ .Values.campaign.frontend.service.name }}
                 port:
-                  number: {{ .Values.campaign.service.port }}
+                  number: {{ .Values.campaign.frontend.service.port }}

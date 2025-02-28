@@ -21,7 +21,7 @@ spec:
       - name: ecr-secret
       containers:
       - name: {{ .Values.campaign.frontend.name }}
-        image: {{ .Values.campaign.image.repository }}:{{ .Values.campaign.image.tag }}
-        imagePullPolicy: {{ .Values.campaign.image.pullPolicy }}
+        image: {{ .Values.campaign.frontend.image.repository }}:{{ .Values.campaign.frontend.image.tag }}
+        imagePullPolicy: {{ .Values.campaign.frontend.image.pullPolicy }}
         ports:
-        - containerPort: {{ .Values.campaign.service.port }}
+        - containerPort: {{ .Values.campaign.frontend.service.port }}
