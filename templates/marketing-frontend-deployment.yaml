@@ -24,4 +24,4 @@ spec:
         image: {{ .Values.campaign.frontend.image.repository }}:{{ .Values.campaign.frontend.image.tag }}
         imagePullPolicy: {{ .Values.campaign.frontend.image.pullPolicy }}
         ports:
-        - containerPort: {{ .Values.campaign.frontend.service.port }}
+        - containerPort: {{ .Values.campaign.service.port }}
