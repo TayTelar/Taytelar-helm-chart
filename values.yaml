@@ -147,3 +147,16 @@ marketing:
     enabled: true
     name: marketing-ingress
     host: marketing.seabed2crest.com
+  
+campaign:
+  frontend:
+  name: marketing-frontend
+  image:
+    repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/marketing-frontend-service
+    tag: latest
+    pullPolicy: Always
+  service:
+    type: ClusterIP
+    name: frontend
+    port: 80
+    targetPort: 3000
