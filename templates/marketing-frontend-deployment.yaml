@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.campaign.frontend.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.campaign.frontend.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.campaign.frontend.name }}
+    spec:
+      imagePullSecrets:
+      - name: ecr-secret
+      containers:
+      - name: {{ .Values.campaign.frontend.name }}
+        image: {{ .Values.campaign.frontend.image.repository }}:{{ .Values.campaign.frontend.image.tag }}
+        imagePullPolicy: {{ .Values.campaign.frontend.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.campaign.service.port }}

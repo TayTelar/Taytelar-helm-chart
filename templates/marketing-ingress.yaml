@@ -16,17 +16,17 @@ spec:
     - host: {{ .Values.marketing.ingress.host }}
       http:
         paths:
-          - path: /
+          - path: /api
             pathType: Prefix
             backend:
               service:
                 name: {{ .Values.marketing.service.name }}
                 port:
                   number: {{ .Values.marketing.service.port }}
-          # - path: /
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: {{ .Values.frontend.service.name }}
-          #       port:
-          #         number: {{ .Values.frontend.service.port }}
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.campaign.service.name }}
+                port:
+                  number: {{ .Values.campaign.service.port }}
