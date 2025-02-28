@@ -17,11 +17,10 @@ metadata:
     nginx.ingress.kubernetes.io/auth-secret: "dashboard-auth"
     nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
     meta.helm.sh/release-namespace: kubernetes-dashboard
-    alb.ingress.kubernetes.io/auth-type: "basic"
-    alb.ingress.kubernetes.io/auth-secret: "auth-secret"
-    alb.ingress.kubernetes.io/auth-scope: "/"
-    alb.ingress.kubernetes.io/auth-realm: "Authentication Required"
-    alb.ingress.kubernetes.io/scheme: "internet-facing"
+    alb.ingress.kubernetes.io/auth-type: "cognito"
+    alb.ingress.kubernetes.io/auth-scope: "openid"
+    alb.ingress.kubernetes.io/auth-idp-cognito: "arn:aws:cognito-idp:ap-south-1:794038231860:userpool/ap-south-1_5leylQgE2"
+    alb.ingress.kubernetes.io/auth-on-unauthenticated-request: "authenticate"
 spec:
   ingressClassName: alb
   rules:
