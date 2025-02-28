@@ -150,7 +150,7 @@ marketing:
   
 campaign:
   frontend:
-  name: marketing-frontend
+    name: marketing-frontend
   image:
     repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/marketing-frontend-service
     tag: latest
