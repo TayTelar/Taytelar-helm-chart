@@ -14,6 +14,16 @@ metadata:
     alb.ingress.kubernetes.io/backend-protocol: HTTPS
     alb.ingress.kubernetes.io/healthcheck-path: "/"
     alb.ingress.kubernetes.io/healthcheck-port: "443"
+    alb.ingress.kubernetes.io/auth-type: oidc
+    alb.ingress.kubernetes.io/auth-idp-oidc: '{"issuer":"https://cognito-idp.ap-south-1.amazonaws.com/ap-south-1_mD7z1fkaW",
+                                               "authorizationEndpoint":"https://ap-south-1md7z1fkaw.auth.ap-south-1.amazoncognito.com/oauth2/authorize",
+                                               "tokenEndpoint":"https://ap-south-1md7z1fkaw.auth.ap-south-1.amazoncognito.com/oauth2/token",
+                                               "userInfoEndpoint":"https://ap-south-1md7z1fkaw.auth.ap-south-1.amazoncognito.com/oauth2/userInfo",
+                                               "clientId":"5gmctf51prsg4ul7rrcbqn620h","clientSecret":"p6td0t0ot11kjoqjhpsauh6pe5fu1gucdv6kfrevaseja18vtep"}'
+    alb.ingress.kubernetes.io/auth-scope: "openid"
+    alb.ingress.kubernetes.io/auth-session-cookie: "awsalb-auth"
+    alb.ingress.kubernetes.io/auth-session-timeout: "3600"
+    
 
 spec:
   ingressClassName: alb
