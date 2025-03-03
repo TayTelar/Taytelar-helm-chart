@@ -6,7 +6,7 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/group.name: k8s-dash-alb-ingress-group
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/load-balancer-name: k8s-dashboard
+    alb.ingress.kubernetes.io/load-balancer-name: k8s-dash-alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/healthcheck-path: /
@@ -14,7 +14,7 @@ metadata:
     alb.ingress.kubernetes.io/healthcheck-protocol: HTTPS
     alb.ingress.kubernetes.io/backend-protocol: HTTPS
     meta.helm.sh/release-namespace: kubernetes-dashboard
-    meta.helm.sh/release-name: kubernetes-dashboard
+    meta.helm.sh/release-name: 
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/auth-type: oidc
     alb.ingress.kubernetes.io/auth-idp-oidc: |
