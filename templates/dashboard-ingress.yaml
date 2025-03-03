@@ -5,11 +5,10 @@ metadata:
   namespace: kubernetes-dashboard
   annotations:
     alb.ingress.kubernetes.io/group.name: k8s-dash-alb-ingress-group
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80},{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
     alb.ingress.kubernetes.io/load-balancer-name: k8s-dash-alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/a8ded5d4-3539-43a5-a8cf-532daf5e8c44
     meta.helm.sh/release-namespace: kubernetes-dashboard
     
 spec:
