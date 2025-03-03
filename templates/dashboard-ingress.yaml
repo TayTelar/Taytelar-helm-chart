@@ -24,4 +24,4 @@ spec:
           service:
             name: kubernetes-dashboard-kong-proxy
             port:
-              number: 8443
+              number: 443
