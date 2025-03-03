@@ -15,7 +15,6 @@ metadata:
     alb.ingress.kubernetes.io/backend-protocol: HTTPS
     meta.helm.sh/release-namespace: kubernetes-dashboard
     meta.helm.sh/release-name: kubernetes-dashboard
-    alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/auth-type: oidc
     alb.ingress.kubernetes.io/auth-idp-oidc: |
       {
