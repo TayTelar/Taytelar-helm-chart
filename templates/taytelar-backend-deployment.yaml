@@ -164,6 +164,24 @@ spec:
             #MAIL
             - name: MAIL_ADDRESS
               value: "{{ .Values.env.mail.to.username }}"
+            #whatsapp
+            - name: WHATSAPP_PHONE_ID
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: whatsapp-phone-id
+            
+            - name: WHATSAPP_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: whatsapp-token
+
+            - name: WHATSAPP_WEBHOOK
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: whatsapp-webhook
 
           volumeMounts:
             - mountPath: /var/log/pods

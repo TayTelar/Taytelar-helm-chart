@@ -59,6 +59,11 @@ thirdparty:
     url: test
     domain: test
 
+whatsapp:
+  phone-id: test
+  token: test
+  webhook: test
+
   #marketing
 imap:
   host: test
