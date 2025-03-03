@@ -60,7 +60,7 @@ thirdparty:
     domain: test
 
 whatsapp:
-  phone-id: test
+  phoneid: test
   token: test
   webhook: test
 

@@ -169,7 +169,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
-                  key: whatsapp-phone-id
+                  key: whatsapp-phoneid
             
             - name: WHATSAPP_TOKEN
               valueFrom:
