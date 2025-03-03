@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: dashboard-ingress
+  name: kubernetes-ingress
   namespace: kubernetes-dashboard
   annotations:
     alb.ingress.kubernetes.io/group.name: k8s-dash-alb-ingress-group
@@ -10,14 +10,8 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/a8ded5d4-3539-43a5-a8cf-532daf5e8c44
-    alb.ingress.kubernetes.io/auth-type: oidc
-    alb.ingress.kubernetes.io/auth-idp-oidc: '{"Issuer":"https://cognito-idp.ap-south-1.amazonaws.com/ap-south-1_8OarTbSms","AuthorizationEndpoint":"https://ap-south-18oartbsms.auth.ap-south-1.amazoncognito.com/oauth2/authorize","TokenEndpoint":"https://ap-south-18oartbsms.auth.ap-south-1.amazoncognito.com/oauth2/token","UserInfoEndpoint":"https://ap-south-18oartbsms.auth.ap-south-1.amazoncognito.com/oauth2/userInfo","ClientId":"3se45tug7cq6o8ohejf3q9bvhv"}'
-    alb.ingress.kubernetes.io/auth-on-unauthenticated-request: authenticate
-    alb.ingress.kubernetes.io/auth-scope: "openid"
-    alb.ingress.kubernetes.io/auth-session-timeout: "3600"
-    alb.ingress.kubernetes.io/ssl-redirect: "443"
-    alb.ingress.kubernetes.io/target-group-attributes: preserve_client_ip.enabled=true
-
+    meta.helm.sh/release-namespace: kubernetes-dashboard
+    
 spec:
   ingressClassName: alb
   rules:
@@ -30,4 +24,4 @@ spec:
           service:
             name: kubernetes-dashboard-kong-proxy
             port:
-              number: 80
+              number: 443
