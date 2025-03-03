@@ -28,6 +28,7 @@ metadata:
     alb.ingress.kubernetes.io/auth-scope: "openid"
     alb.ingress.kubernetes.io/auth-session-timeout: "3600"
     alb.ingress.kubernetes.io/ssl-redirect: "443"
+    alb.ingress.kubernetes.io/target-group-attributes: preserve_client_ip.enabled=true
     
 spec:
   ingressClassName: alb
