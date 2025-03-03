@@ -165,3 +165,10 @@ campaign:
       name: marketing-frontend
       port: 80
       targetPort: 80  
+
+dashboard-ingress:
+  enabled: true
+  name: "dashboard-ingress"
+  host: "dashboard.taytelar.com"
+  serviceName: "kubernetes-dashboard-kong-proxy"
+  servicePort: 80
