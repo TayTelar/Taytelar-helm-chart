@@ -62,7 +62,7 @@ thirdparty:
 whatsapp:
   phoneid: test
   token: test
-  webhook: test
+  webhook-token: test
 
   #marketing
 imap:
