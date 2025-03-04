@@ -15,7 +15,13 @@ metadata:
 
     # OIDC Authentication with Cognito
     alb.ingress.kubernetes.io/auth-type: oidc
-    alb.ingress.kubernetes.io/auth-idp-oidc: '{"issuer": "https://cognito-idp.ap-south-1.amazonaws.com/ap-south-1_m8c7cJkS4","authorizationEndpoint": "https://ap-south-1m8c7cjks4.auth.ap-south-1.amazoncognito.com/oauth2/authorize","tokenEndpoint": "https://ap-south-1m8c7cjks4.auth.ap-south-1.amazoncognito.com/oauth2/token","userInfoEndpoint": "https://ap-south-1m8c7cjks4.auth.ap-south-1.amazoncognito.com/oauth2/userInfo","clientId": "38pc378spq77rqrlebuid4kgc"}'
+    alb.ingress.kubernetes.io/auth-idp-oidc: |-
+      {"issuer": "https://cognito-idp.ap-south-1.amazonaws.com/ap-south-1_m8c7cJkS4",
+      "authorizationEndpoint": "https://ap-south-1m8c7cjks4.auth.ap-south-1.amazoncognito.com/oauth2/authorize",
+      "tokenEndpoint": "https://ap-south-1m8c7cjks4.auth.ap-south-1.amazoncognito.com/oauth2/token",
+      "userInfoEndpoint": "https://ap-south-1m8c7cjks4.auth.ap-south-1.amazoncognito.com/oauth2/userInfo",
+      "clientId": "38pc378spq77rqrlebuid4kgc"}
+
     alb.ingress.kubernetes.io/auth-scope: "openid"
     alb.ingress.kubernetes.io/auth-session-cookie: "awsalbauth"
     alb.ingress.kubernetes.io/auth-session-timeout: "3600"
