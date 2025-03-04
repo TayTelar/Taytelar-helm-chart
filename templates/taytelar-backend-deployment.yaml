@@ -181,7 +181,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
-                  key: whatsapp-webhook-token
+                  key: whatsapp-webhook
             
       
 
