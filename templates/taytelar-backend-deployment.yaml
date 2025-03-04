@@ -177,11 +177,11 @@ spec:
                   name: backend-secrets
                   key: whatsapp-token
 
-            - name: WHATSAPP_WEBHOOK_TOKEN
+            - name: WHATSAPP_WEBHOOK
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
-                  key: whatsapp-webhooktoken
+                  key: whatsapp-webhook-token
             
       
 
