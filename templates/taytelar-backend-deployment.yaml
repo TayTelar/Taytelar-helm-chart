@@ -177,7 +177,7 @@ spec:
                   name: backend-secrets
                   key: whatsapp-token
 
-            - name: WHATSAPP_WEBHOOK
+            - name: WHATSAPP_WEBHOOK_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
