@@ -12,6 +12,7 @@ metadata:
     alb.ingress.kubernetes.io/backend-protocol: HTTPS
     alb.ingress.kubernetes.io/healthcheck-path: "/"
     alb.ingress.kubernetes.io/healthcheck-port: "443"
+    alb.ingress.kubernetes.io/auth-url: "https://dashboard.taytelar.com/oauth2/auth"
 
 spec:
   ingressClassName: alb
