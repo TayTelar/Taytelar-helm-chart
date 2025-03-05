@@ -24,6 +24,8 @@ spec:
           - --cookie-httponly=true
           - --provider=htpasswd
           - --htpasswd-file=/etc/oauth2/htpasswd
+          - --skip-provider-button
+          - --email-domain=*
         env:
           - name: OAUTH2_PROXY_COOKIE_SECRET
             valueFrom:
