@@ -19,7 +19,7 @@ spec:
         args:
         - --provider=github
         - --email-domain=*
-        - --upstream=http://localhost:8000
+        - --upstream=http://kubernetes-dashboard-web:8000
         - --http-address=0.0.0.0:4180
         - --redirect-url=https://dashboard.taytelar.com/oauth2/callback
         - --cookie-secret=$(OAUTH2_PROXY_COOKIE_SECRET)
