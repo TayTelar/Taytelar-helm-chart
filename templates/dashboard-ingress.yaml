@@ -12,6 +12,7 @@ metadata:
     alb.ingress.kubernetes.io/backend-protocol: HTTPS
     alb.ingress.kubernetes.io/healthcheck-path: "/"
     alb.ingress.kubernetes.io/healthcheck-port: "443"
+    alb.ingress.kubernetes.io/auth-type: none
 
 spec:
   ingressClassName: alb
@@ -23,6 +24,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: kubernetes-dashboard-kong-proxy
+            name: oauth2-proxy
             port:
-              number: 443
+              number: 4180
