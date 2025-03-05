@@ -34,4 +34,4 @@ spec:
       volumes:
         - name: auth-volume
           secret:
-            secretName: oauth2-proxy-basic-auth
+            secretName: oauth2-proxy-secret
