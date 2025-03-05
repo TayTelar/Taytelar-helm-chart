@@ -5,14 +5,13 @@ metadata:
   namespace: kubernetes-dashboard
   annotations:
     alb.ingress.kubernetes.io/group.name: k8s-dash-alb-ingress-group
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443},{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}'
     alb.ingress.kubernetes.io/load-balancer-name: k8s-dash-alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/backend-protocol: HTTPS
     alb.ingress.kubernetes.io/healthcheck-path: "/"
     alb.ingress.kubernetes.io/healthcheck-port: "443"
-    alb.ingress.kubernetes.io/auth-url: "https://dashboard.taytelar.com/oauth2/auth"
 
 spec:
   ingressClassName: alb
@@ -20,7 +19,7 @@ spec:
   - host: dashboard.taytelar.com
     http:
       paths:
-      - path: /oauth2/callback
+      - path: /
         pathType: Prefix
         backend:
           service:
