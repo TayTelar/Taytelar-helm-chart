@@ -4,41 +4,21 @@ metadata:
   name: oauth2-proxy
   namespace: kubernetes-dashboard
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: oauth2-proxy
   template:
-    metadata:
-      labels:
-        app: oauth2-proxy
     spec:
       containers:
       - name: oauth2-proxy
         image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0
         args:
-          - --http-address=0.0.0.0:4180
-          - --upstream=http://kubernetes-dashboard.kube-system.svc.cluster.local:443
-          - --cookie-secret=$(OAUTH2_PROXY_COOKIE_SECRET)
-          - --cookie-secure=false
-          - --cookie-httponly=true
-          - --provider=htpasswd
-          - --htpasswd-file=/etc/oauth2/htpasswd
-          - --skip-provider-button
-          - --email-domain=*
-        env:
-          - name: OAUTH2_PROXY_COOKIE_SECRET
-            valueFrom:
-              secretKeyRef:
-                name: oauth2-proxy-secret
-                key: OAUTH2_PROXY_COOKIE_SECRET
-        ports:
-          - containerPort: 4180
+          - "--http-address=0.0.0.0:4180"
+          - "--upstream=http://kubernetes-dashboard-api:8000/"
+          - "--cookie-secret=$(OAUTH2_PROXY_COOKIE_SECRET)"
+          - "--htpasswd-file=/etc/oauth2-proxy/auth-file"
+          - "--provider=google"  
         volumeMounts:
-          - name: oauth2-htpasswd
-            mountPath: /etc/oauth2
-            readOnly: true
+          - name: auth-volume
+            mountPath: /etc/oauth2-proxy
       volumes:
-      - name: oauth2-htpasswd
-        secret:
-          secretName: oauth2-htpasswd
+        - name: auth-volume
+          secret:
+            secretName: oauth2-proxy-basic-auth
