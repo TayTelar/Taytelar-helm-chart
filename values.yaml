@@ -165,7 +165,3 @@ campaign:
       name: marketing-frontend
       port: 80
       targetPort: 80  
-
-
-oauth2Proxy:
-  cookieSecret: test
