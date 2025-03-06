@@ -21,12 +21,25 @@ spec:
         image: quay.io/oauth2-proxy/oauth2-proxy:latest
         args:
           - --provider=github
-          - --client-id=Ov23limwWvGxm8JccUCN
-          - --client-secret=2e558089acbe6352a2cb85a318ebb5f83435f977
-          - --cookie-secret=6XBTo+6WgE/BKMhdyb4qNb9kFlR16RPIsWPz5OGNwyU=
-          - --cookie-secure=false
           - --redirect-url=https://dashboard.taytelar.com/oauth2/callback
-          - --upstream=http://kubernetes-dashboard.kubernetes-dashboard.svc.cluster.local:443
+          - --upstream=https://kubernetes-dashboard-web.kubernetes-dashboard.svc.cluster.local:8000
           - --http-address=0.0.0.0:4180
+          - --cookie-secure=false
+        env:
+          - name: OAUTH2_PROXY_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: oauth2-proxy-secrets
+                key: client-id
+          - name: OAUTH2_PROXY_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: oauth2-proxy-secrets
+                key: client-secret
+          - name: OAUTH2_PROXY_COOKIE_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: oauth2-proxy-secrets
+                key: cookie-secret
         ports:
           - containerPort: 4180
