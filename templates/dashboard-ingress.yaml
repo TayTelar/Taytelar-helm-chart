@@ -9,9 +9,10 @@ metadata:
     alb.ingress.kubernetes.io/load-balancer-name: k8s-dash-alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/backend-protocol: HTTPS
-    alb.ingress.kubernetes.io/healthcheck-path: "/oauth2/auth"
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/healthcheck-path: "/ping"
     alb.ingress.kubernetes.io/healthcheck-port: "4180"
+    alb.ingress.kubernetes.io/success-codes: "200-399"
 
 spec:
   ingressClassName: alb
@@ -23,6 +24,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: kubernetes-dashboard-kong-proxy
+            name: oauth2-proxy
             port:
-              number: 443
+              number: 4180
