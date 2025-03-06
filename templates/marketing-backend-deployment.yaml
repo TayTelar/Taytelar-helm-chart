@@ -125,3 +125,10 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: jwt_secret_key
+
+            - name: BREVO_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: brevo_key
+

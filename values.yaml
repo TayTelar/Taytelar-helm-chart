@@ -58,6 +58,8 @@ thirdparty:
     key: test
     url: test
     domain: test
+  brevo:
+    key: test
 
 whatsapp:
   phoneid: test
