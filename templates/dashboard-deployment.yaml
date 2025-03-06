@@ -22,7 +22,7 @@ spec:
         args:
           - --provider=github
           - --redirect-url=https://dashboard.taytelar.com/oauth2/callback
-          - --upstream=https://kubernetes-dashboard-kong-proxy.kubernetes-dashboard.svc.cluster.local:443
+          - --upstream=https://kubernetes-dashboard-kong-proxy.kubernetes-dashboard.svc.cluster.local:8443
           - --http-address=0.0.0.0:4180
           - --cookie-secure=true
           - --email-domain=*
