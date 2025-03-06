@@ -26,10 +26,3 @@ spec:
             name: oauth2-proxy
             port:
               number: 4180
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: kubernetes-dashboard-kong-proxy
-            port:
-              number: 443
