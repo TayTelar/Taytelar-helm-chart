@@ -30,6 +30,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: kubernetes-dashboard-web
+            name: oauth2-proxy
             port:
-              number: 8000
+              number: 4180
