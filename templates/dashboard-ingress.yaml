@@ -10,19 +10,25 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/backend-protocol: HTTPS
-    alb.ingress.kubernetes.io/healthcheck-path: "/"
-    alb.ingress.kubernetes.io/healthcheck-port: "443"
+    alb.ingress.kubernetes.io/healthcheck-path: "/oauth2/auth"
+    alb.ingress.kubernetes.io/healthcheck-port: "4180"
 
 spec:
-  ingressClassName: alb
   rules:
   - host: dashboard.taytelar.com
     http:
       paths:
+      - path: /oauth2
+        pathType: Prefix
+        backend:
+          service:
+            name: oauth2-proxy
+            port:
+              number: 4180
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: kubernetes-dashboard-kong-proxy
+            name: kubernetes-dashboard
             port:
               number: 443
