@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.bus.ingress.name }}
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: bus-ingress-group
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}, {"HTTP": 8086}]'  
+    alb.ingress.kubernetes.io/load-balancer-name: bus-booking-alb
+    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/ad32fe8a-3914-4004-8a76-a90bcd19fed0
+
+spec:
+  ingressClassName: alb
+  rules:
+    - host: {{ .Values.bus.ingress.host }}
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.bus.service.name }}
+                port:
+                  number: {{ .Values.bus.service.port }}
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.campaign.frontend.service.name }}
+                port:
+                  number: {{ .Values.campaign.frontend.service.port }}

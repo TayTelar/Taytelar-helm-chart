@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.bus.service.name }}
+spec:
+  type: {{ .Values.bus.service.type }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.bus.service.port }}
+      targetPort: {{ .Values.bus.service.targetPort }}
+  selector:
+    app: {{ .Values.bus.backend.name }}
