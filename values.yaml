@@ -183,17 +183,17 @@ bus:
   ingress:
     enabled: true
     name: bus-ingress
-    host: dev.nandhubus.in
+    host: dev.nandubus.in
 
 nandhubus:
   frontend:
-    name: marketing-frontend
+    name: bus-frontend
     image:
-      repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/marketing-frontend-service
+      repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/bus-frontend-service
       tag: latest
       pullPolicy: Always
     service:
       type: ClusterIP
-      name: marketing-frontend
+      name: bus-frontend
       port: 80
       targetPort: 3000
