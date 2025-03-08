@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.nandhubus.frontend.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.nandhubus.frontend.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.nandhubus.frontend.name }}
+    spec:
+      imagePullSecrets:
+      - name: ecr-secret
+      containers:
+      - name: {{ .Values.nandhubus.frontend.name }}
+        image: {{ .Values.nandhubus.frontend.image.repository }}:{{ .Values.nandhubus.frontend.image.tag }}
+        imagePullPolicy: {{ .Values.nandhubus.frontend.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.nandhubus.frontend.service.port }}
