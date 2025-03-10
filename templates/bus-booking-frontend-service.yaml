@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.nandhubus.service.name }}
+  name: {{ .Values.nandhubus.frontend.service.name }}
 spec:
-  type: {{ .Values.nandhubus.service.type }}
+  type: {{ .Values.nandhubus.frontend.service.type }}
   ports:
     - protocol: TCP
-      port: {{ .Values.nandhubus.service.port }}
-      targetPort: {{ .Values.nandhubus.service.targetPort }}
+      port: {{ .Values.nandhubus.frontend.service.port }}
+      targetPort: {{ .Values.nandhubus.frontend.service.targetPort }}
   selector:
     app: {{ .Values.nandhubus.backend.name }}
