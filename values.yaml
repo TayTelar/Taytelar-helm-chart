@@ -39,6 +39,9 @@ env:
     bucketName: test
     reviewbucket: test
     marketingbucket: test
+    nandhubus_bucket: test
+  email:
+    template: test
 
 thirdparty:
   razopay_api:
@@ -130,10 +133,18 @@ application:
   security:
     jwt:
       secret:
-        key: test 
+        key: test
+      access:
+        token:
+          expire: test 
+      refresh:
+        token:
+          expire: test
     token:
       secret:
         key: test
+      
+
 logo:
   image:
     url: test
@@ -175,6 +186,7 @@ bus:
     repository: 794038231860.dkr.ecr.ap-south-1.amazonaws.com/bus-backend-service
     tag: latest
     pullPolicy: Always
+    url: test
   service:
     type: ClusterIP
     name: bus-backend
