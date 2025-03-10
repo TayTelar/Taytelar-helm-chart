@@ -9,4 +9,4 @@ spec:
       port: {{ .Values.nandhubus.frontend.service.port }}
       targetPort: {{ .Values.nandhubus.frontend.service.targetPort }}
   selector:
-    app: {{ .Values.nandhubus.backend.name }}
+    app: {{ .Values.bus.backend.name }}
