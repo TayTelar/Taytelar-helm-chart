@@ -18,10 +18,10 @@ spec:
         app: {{ .Values.nandhubus.frontend.name }}
     spec:
       imagePullSecrets:
-      - name: ecr-secret
+        - name: ecr-secret
       containers:
-      - name: {{ .Values.nandhubus.frontend.name }}
-        image: {{ .Values.nandhubus.frontend.image.repository }}:{{ .Values.nandhubus.frontend.image.tag }}
-        imagePullPolicy: {{ .Values.nandhubus.frontend.image.pullPolicy }}
-        ports:
-        - containerPort: {{ .Values.nandhubus.frontend.service.port }}
+        - name: {{ .Values.nandhubus.frontend.name }}
+          image: {{ .Values.nandhubus.frontend.image.repository }}:{{ .Values.nandhubus.frontend.image.tag }}
+          imagePullPolicy: {{ .Values.nandhubus.frontend.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.nandhubus.frontend.service.port }}
