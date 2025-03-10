@@ -1,0 +1,147 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.bus.backend.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.bus.backend.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.bus.backend.name }}
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret
+      containers:
+        - name: {{ .Values.bus.backend.name }}
+          image: {{ .Values.bus.image.repository }}:{{ .Values.bus.image.tag }}
+          imagePullPolicy: {{ .Values.bus.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.bus.service.port }}
+
+          env:
+            # Application Environment
+            - name: SPRING_PROFILES_ACTIVE
+              value: "dev"
+
+            # Database Configuration
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://{{ .Values.database.postgres.name }}:{{ .Values.database.postgres.port }}/{{ .Values.database.postgres.dbname }}"
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: postgres-username
+            - name: DB_PASSWORD 
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: postgres-password
+
+            # AWS Configuration
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: aws-access-key
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: aws-secret-key
+            - name: AWS_BUS_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: aws-bucket-name
+            - name: AWS_REGION
+              value: "ap-south-1"
+
+            # SMTP Configuration
+            - name: SMTP_HOST
+              value: "smtp.gmail.com"
+            - name: SMTP_PORT
+              value: "587"
+            - name: SMTP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: smtp-username
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: smtp-password
+
+            # IMAP Configuration
+            - name: IMAP_HOST
+              value: "imap.gmail.com"
+            - name: IMAP_PORT
+              value: "993"
+            - name: IMAP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: imap-username
+            - name: IMAP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: imap-password
+
+            # JWT Configuration
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: jwt_secret
+            - name: JWT_ACCESS_TOKEN_EXPIRE
+              value: "604800000"
+            - name: JWT_REFRESH_TOKEN_EXPIRE
+              value: "604800000"
+
+            # Fast2SMS API
+            - name: FAST2SMS_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: fast2sms-api-key
+            - name: FAST2SMS_URL
+              value: "https://www.fast2sms.com/dev/bulkV2?authorization="
+
+            # Google Maps API
+            - name: GOOGLE_MAPS_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: google-maps-api-key
+            - name: GOOGLE_MAPS_URL
+              value: "https://maps.googleapis.com/maps/api/directions/json?origin="
+
+            # Razorpay API
+            - name: RAZORPAY_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: razorpay-key-id
+            - name: RAZORPAY_KEY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: razorpay-key-secret
+
+            # Additional Configurations
+            - name: BUS_IMAGE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: bus-image-url
+            - name: EMAIL_TEMPLATE
+              value: "Email_Template.html"
