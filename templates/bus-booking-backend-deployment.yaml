@@ -69,10 +69,6 @@ spec:
               secretKeyRef:
                   name: backend-secrets
                   key: smtp-host
-            - name: SMTP_PORT
-              secretKeyRef:
-                  name: backend-secrets
-                  key: smtp-port
             - name: SMTP_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -89,10 +85,6 @@ spec:
               secretKeyRef:
                   name: backend-secrets
                   key: imap-host
-            - name: IMAP_PORT
-              secretKeyRef:
-                  name: backend-secrets
-                  key: imap-port
             - name: IMAP_USERNAME
               valueFrom:
                 secretKeyRef:
