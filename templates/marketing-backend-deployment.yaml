@@ -112,12 +112,12 @@ spec:
                   key: falcon-key
             - name: FALCON_URL
               valueFrom:
-              secretKeyRef:
+                secretKeyRef:
                   name: backend-secrets
                   key: falcon-url
             - name: FALCON_DOMAIN
               valueFrom:
-              secretKeyRef:
+                secretKeyRef:
                   name: backend-secrets
                   key: falcon-domain
             - name: JWT_SECRET
