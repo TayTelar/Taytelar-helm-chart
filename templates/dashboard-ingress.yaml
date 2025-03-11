@@ -1,27 +1,27 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: kubernetes-ingress
-  namespace: kubernetes-dashboard
-  annotations:
-    alb.ingress.kubernetes.io/group.name: k8s-dash-alb-ingress-group
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/load-balancer-name: k8s-dash-alb
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/backend-protocol: HTTPS
-    alb.ingress.kubernetes.io/healthcheck-port: "443"
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: kubernetes-ingress
+#   namespace: kubernetes-dashboard
+#   annotations:
+#     alb.ingress.kubernetes.io/group.name: k8s-dash-alb-ingress-group
+#     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+#     alb.ingress.kubernetes.io/load-balancer-name: k8s-dash-alb
+#     alb.ingress.kubernetes.io/scheme: internet-facing
+#     alb.ingress.kubernetes.io/target-type: ip
+#     alb.ingress.kubernetes.io/backend-protocol: HTTPS
+#     alb.ingress.kubernetes.io/healthcheck-port: "443"
 
-spec:
-  ingressClassName: alb
-  rules:
-  - host: dashboard.taytelar.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: kubernetes-dashboard-kong-proxy
-            port:
-              number: 443
+# spec:
+#   ingressClassName: alb
+#   rules:
+#   - host: dashboard.taytelar.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: kubernetes-dashboard-kong-proxy
+#             port:
+#               number: 443
