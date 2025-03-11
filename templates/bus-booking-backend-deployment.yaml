@@ -56,7 +56,7 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: aws-secret-key
-            - name: AWS_BUS_BUCKET_NAME
+            - name: AWS_BUCKET_NAME
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
@@ -102,12 +102,12 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: jwt_secret_key
-            - name: JWT_ACCESS_TOKEN_EXPIRE
+            - name: JWT_EXPIRATION
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
                   key: jwt-access-token-expire
-            - name: JWT_REFRESH_TOKEN_EXPIRE
+            - name: REFRESH_TOKEN_EXPIRATION
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
