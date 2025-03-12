@@ -137,7 +137,9 @@ application:
     jwt:
       secret:
         key: test
-        
+    token:
+      secret:
+        key: test    
 logo:
   image:
     url: test
