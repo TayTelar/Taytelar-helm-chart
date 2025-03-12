@@ -129,6 +129,9 @@ busybox:
 cipher:
   secret:
     key: test
+buscipher:
+  secret:
+    key: test
 application:
   security:
     jwt:
@@ -209,3 +212,4 @@ nandhubus:
       name: bus-frontend
       port: 80
       targetPort: 3000
+
