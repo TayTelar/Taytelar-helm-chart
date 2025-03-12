@@ -157,7 +157,9 @@ spec:
                   name: backend-secrets
                   key: email-template
             - name: CIPHER_SECRET_KEY
+            # Security Keys
+            - name: CIPHER_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
-                  key: buscipher-secret-key
+                  key: cipher-secret-key

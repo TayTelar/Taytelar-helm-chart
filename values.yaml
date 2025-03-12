@@ -129,17 +129,11 @@ busybox:
 cipher:
   secret:
     key: test
-buscipher:
-  secret:
-    key: test
 application:
   security:
     jwt:
       secret:
-        key: test
-    token:
-      secret:
-        key: test    
+        key: test  
 logo:
   image:
     url: test
