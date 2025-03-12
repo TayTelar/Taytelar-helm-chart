@@ -105,15 +105,9 @@ spec:
                   name: backend-secrets
                   key: jwt_secret_key
             - name: JWT_EXPIRATION
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secrets
-                  key: jwt-access-token-expire
+              value: 3600000
             - name: REFRESH_TOKEN_EXPIRATION
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secrets
-                  key: jwt-refresh-token-expire
+              value: 86400000
 
             # Fast2SMS API
             - name: FAST2SMS_API_KEY

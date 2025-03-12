@@ -137,17 +137,7 @@ application:
     jwt:
       secret:
         key: test
-      access:
-        token:
-          expire: test 
-      refresh:
-        token:
-          expire: test
-    token:
-      secret:
-        key: test
-      
-
+        
 logo:
   image:
     url: test
