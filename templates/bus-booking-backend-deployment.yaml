@@ -110,7 +110,7 @@ spec:
               value: "86400000"
 
             # Fast2SMS API
-            - name: FAST2SMS_API_KEY
+            - name: FAST2SMS_API_ID
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
