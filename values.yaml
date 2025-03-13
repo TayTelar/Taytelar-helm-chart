@@ -91,6 +91,8 @@ database:
     dbname: Tay-Telar
     marketing:
       dbname: dm-email 
+    bus:
+      dbname: bus_reservation_db
     port: 5432
     enabled: true
     storage:
