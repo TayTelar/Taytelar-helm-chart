@@ -3,10 +3,10 @@ kind: PersistentVolume
 metadata:
   name: postgres-pv
   labels:
-    name: postgres-pv
+    app: postgres
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   storageClassName: gp2
   accessModes:
     - ReadWriteOnce
