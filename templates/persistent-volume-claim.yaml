@@ -11,4 +11,4 @@ spec:
       storage: 10Gi
   selector:
     matchLabels:
-      app: postgres-pv
+      app: postgres
