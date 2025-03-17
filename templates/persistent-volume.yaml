@@ -1,0 +1,16 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: postgres-pv
+  labels:
+    name: postgres-pv
+spec:
+  capacity:
+    storage: 200Gi
+  storageClassName: standard
+  accessModes:
+    - ReadOnlyMany
+  gcePersistentDisk:
+    pdName: postgres-pv
+    fsType: ext4
+    readOnly: true
