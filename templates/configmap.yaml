@@ -5,14 +5,24 @@ metadata:
 data:
   application.properties: |
     server.port = 8081
+
     spring.datasource.url=jdbc:postgresql://postgres-service:5432/Tay-Telar
-    spring.datasource.url=jdbc:postgresql://postgres-service:5432/dm-email
-    spring.datasource.url=jdbc:postgresql://postgres-service:5432/
-    spring.datasource.username=postgres
+    spring.datasource.username={{ .Values.database.postgres.username }}
     spring.datasource.password={{ .Values.database.postgres.password }}
     spring.datasource.driver-class-name=org.postgresql.Driver
     spring.jpa.hibernate.ddl-auto=update
     spring.jpa.show-sql=true
     spring.jpa.properties.hibernate.format_sql=true
     spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+
+    spring.datasource.secondary.url=jdbc:postgresql://postgres-service:5432/dm-email
+    spring.datasource.secondary.username={{ .Values.database.postgres.username }}
+    spring.datasource.secondary.password={{ .Values.database.postgres.password }}
+    spring.datasource.secondary.driver-class-name=org.postgresql.Driver
+
+    spring.datasource.tertiary.url=jdbc:postgresql://postgres-service:5432/bus_reservation_db
+    spring.datasource.tertiary.username={{ .Values.database.postgres.username }}
+    spring.datasource.tertiary.password={{ .Values.database.postgres.password }}
+    spring.datasource.tertiary.driver-class-name=org.postgresql.Driver
+
     spring.data.mongodb.uri=mongodb://mongo-service:27017/TayTelar
