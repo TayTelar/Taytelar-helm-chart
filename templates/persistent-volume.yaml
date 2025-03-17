@@ -6,7 +6,7 @@ metadata:
     name: postgres-pv
 spec:
   capacity:
-    storage: 10Gi
+    storage: 5Gi
   storageClassName: gp2
   accessModes:
     - ReadWriteOnce
