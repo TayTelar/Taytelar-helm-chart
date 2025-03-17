@@ -6,10 +6,10 @@ metadata:
     name: postgres-pv
 spec:
   capacity:
-    storage: 200Gi
+    storage: 10Gi
   storageClassName: gp2
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteOnce
   gcePersistentDisk:
     pdName: postgres-pv
     fsType: ext4
