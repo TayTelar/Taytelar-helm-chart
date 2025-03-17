@@ -1,16 +1,14 @@
-kind: PersistentVolume
 apiVersion: v1
+kind: PersistentVolume
 metadata:
   name: postgres-pv
-  labels:
-    name: postgres-pv
 spec:
   capacity:
     storage: 10Gi
-  storageClassName: gp2
   accessModes:
     - ReadWriteOnce
-  gcePersistentDisk:
-    pdName: postgres-pv
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: gp2
+  awsElasticBlockStore:
+    volumeID: vol-0a42221c7879e553e
     fsType: ext4
-    readOnly: true
