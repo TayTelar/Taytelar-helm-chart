@@ -24,6 +24,14 @@ data:
           app: marketing-backend
         fields_under_root: true
 
+      - type: log
+        enabled: true
+        paths:
+          - /var/log/pods/taytelar-ns_bus-backend-*/bus-backend/*.log
+        fields:
+          app: bus-backend
+        fields_under_root: true
+
     output.logstash:
       hosts: ["logstash:5044"]
       index: "filebeat-%{[fields.app]}-%{+yyyy.MM.dd}"

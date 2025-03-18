@@ -18,6 +18,9 @@ data:
       else if [app] == "marketing-backend" {
         mutate { add_field => { "[@metadata][index]" => "marketing-backend-logs" } }
       }
+      else if [app] == "bus-backend" {
+        mutate { add_field => { "[@metadata][index]" => "bus-backend-logs" } }
+      }
     }
 
     output {
