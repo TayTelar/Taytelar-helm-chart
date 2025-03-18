@@ -7,23 +7,23 @@ metadata:
     app: {{ .Values.elk.filebeat.name }}
 data:
   filebeat.yml: |
-  filebeat.inputs:
-  - type: log
-    enabled: true
-    paths:
-      - /var/log/pods/taytelar-ns_backend-*/backend/*.log
-    fields:
-      app: taytelar-backend
-    fields_under_root: true
+    filebeat.inputs:
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/pods/taytelar-ns_backend-*/backend/*.log
+      fields:
+        app: taytelar-backend
+      fields_under_root: true
 
-  - type: log
-    enabled: true
-    paths:
-      - /var/log/pods/taytelar-ns_marketing-backend-*/marketing-backend/*.log
-    fields:
-      app: marketing-backend
-    fields_under_root: true
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/pods/taytelar-ns_marketing-backend-*/marketing-backend/*.log
+      fields:
+        app: marketing-backend
+      fields_under_root: true
 
-  output.logstash:
-    hosts: ["logstash:5044"]
-    index: "filebeat-%{[fields.app]}-%{+yyyy.MM.dd}"
+    output.logstash:
+      hosts: ["logstash:5044"]
+      index: "filebeat-%{[fields.app]}-%{+yyyy.MM.dd}"
