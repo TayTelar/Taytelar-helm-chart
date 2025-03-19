@@ -8,6 +8,23 @@ spec:
     - protocol: TCP
       port: {{ .Values.backend.service.port }}
       targetPort: {{ .Values.backend.service.targetPort }}
+  selector:
+    app: {{ .Values.backend.name }}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.backend.service.name }}-debug
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    service.beta.kubernetes.io/aws-load-balancer-name: "debug-taytelar-service"
+    external-dns.alpha.kubernetes.io/hostname: "debug.taytelar.com"
+spec:
+  type: LoadBalancer
+  ports:
     - protocol: TCP
       port: 5005
       targetPort: 5005
