@@ -24,11 +24,11 @@ spec:
           value: "{{ .Values.database.postgres.password }}"
         ports:
         - containerPort: 5432
-        volumeMounts:
-        - name: init-script
-          mountPath: /docker-entrypoint-initdb.d/init-db.sql
-          subPath: init-db.sql
-      volumes:
-      - name: init-script
-        configMap:
-          name: postgres-init-script
+      #   volumeMounts:
+      #   - name: init-script
+      #     mountPath: /docker-entrypoint-initdb.d/init-db.sql
+      #     subPath: init-db.sql
+      # volumes:
+      # - name: init-script
+      #   configMap:
+      #     name: postgres-init-script

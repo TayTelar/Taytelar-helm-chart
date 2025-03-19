@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bus-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bus-postgres
+  template:
+    metadata:
+      labels:
+        app: bus-postgres
+    spec:
+      containers:
+      - name: "{{ .Values.bus.postgres.name }}"
+        image: "{{ .Values.bus.postgres.image }}"
+        env:
+        - name: POSTGRES_DB
+          value: "{{ .Values.bus.postgres.dbname }}"
+        - name: POSTGRES_USER
+          value: "{{ .Values.bus.postgres.username }}"
+        - name: POSTGRES_PASSWORD
+          value: "{{ .Values.bus.postgres.password }}"
+        ports:
+        - containerPort: 5433
+    #     volumeMounts:
+    #     - name: init-script
+    #       mountPath: /docker-entrypoint-initdb.d/init-db.sql
+    #       subPath: init-db.sql
+    #   volumes:
+    #   - name: init-script
+    #     configMap:
+    #       name: postgres-init-script
