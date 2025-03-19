@@ -6,7 +6,7 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/group.name: bus-ingress-group
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'   
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'   
     alb.ingress.kubernetes.io/load-balancer-name: bus-booking-alb
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:794038231860:certificate/28c88a39-7f33-4265-9948-5f71ba0d813d
 spec:
