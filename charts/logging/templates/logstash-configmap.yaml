@@ -10,9 +10,22 @@ data:
         port => 5044
       }
     }
+
+    filter {
+      if [app] == "taytelar-backend" {
+        mutate { add_field => { "[@metadata][index]" => "taytelar-backend-logs" } }
+      }
+      else if [app] == "marketing-backend" {
+        mutate { add_field => { "[@metadata][index]" => "marketing-backend-logs" } }
+      }
+      else if [app] == "bus-backend" {
+        mutate { add_field => { "[@metadata][index]" => "bus-backend-logs" } }
+      }
+    }
+
     output {
       elasticsearch {
-        hosts => ["elasticsearch:9200"]
-        index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
+        hosts => ["http://elasticsearch:9200"]
+        index => "%{[@metadata][index]}-%{+YYYY.MM.dd}"
       }
     }
