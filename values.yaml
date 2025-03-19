@@ -194,8 +194,6 @@ bus:
   postgres:
     name: bus-postgres-service
     image: postgres:13
-    username: test
-    password: test
     dbname: bus_reservation_db
     port: 5433
     enabled: true
