@@ -18,6 +18,10 @@ spec:
         env:
         - name: POSTGRES_DB
           value: "{{ .Values.bus.postgres.dbname }}"
+        - name: POSTGRES_USER
+          value: "{{ .Values.database.postgres.username }}"
+        - name: POSTGRES_PASSWORD
+          value: "{{ .Values.database.postgres.password }}"
         - name: PGOPTIONS
           value: "-c idle_in_transaction_session_timeout=600000"
         ports:
