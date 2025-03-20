@@ -26,7 +26,3 @@ spec:
         env:
         - name: discovery.type
           value: single-node
-        - name: xpack.security.enabled
-          value: "true"
-        - name: xpack.security.transport.ssl.enabled
-          value: "true"
