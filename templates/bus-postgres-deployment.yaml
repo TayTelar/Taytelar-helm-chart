@@ -18,17 +18,11 @@ spec:
         env:
         - name: POSTGRES_DB
           value: "{{ .Values.bus.postgres.dbname }}"
-        - name: POSTGRES_USER
-          value: "{{ .Values.bus.postgres.username }}"
-        - name: POSTGRES_PASSWORD
-          value: "{{ .Values.bus.postgres.password }}"
+        - name: PGOPTIONS
+          value: "-c idle_in_transaction_session_timeout=600000"
         ports:
         - containerPort: 5433
-    #     volumeMounts:
-    #     - name: init-script
-    #       mountPath: /docker-entrypoint-initdb.d/init-db.sql
-    #       subPath: init-db.sql
-    #   volumes:
-    #   - name: init-script
-    #     configMap:
-    #       name: postgres-init-script
+        lifecycle:
+          preStop:
+            exec:
+              command: [ "sh", "-c", "psql -U $POSTGRES_USER -d $POSTGRES_DB -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE state = 'idle' AND now() - query_start > interval '10 minutes';\"" ]
