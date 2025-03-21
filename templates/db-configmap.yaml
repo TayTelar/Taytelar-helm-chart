@@ -5,4 +5,4 @@ metadata:
 data:
   init-db.sql: |
     CREATE DATABASE "dm-email";
-    CREATE DATABASE "bus_reservation_db";
+    # CREATE DATABASE "bus_reservation_db";

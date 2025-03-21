@@ -162,3 +162,8 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: cipher-secret-key
+            - name: AMENITIES_IMAGE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: amenities-image-url

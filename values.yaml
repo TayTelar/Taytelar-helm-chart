@@ -181,6 +181,8 @@ bus:
     tag: latest
     pullPolicy: Always
     url: test
+    amenities:
+      url: test
   service:
     type: ClusterIP
     name: bus-backend
