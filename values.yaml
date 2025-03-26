@@ -63,6 +63,8 @@ thirdparty:
     domain: test
   brevo:
     key: test
+  toll:
+    apikey: test
 
 whatsapp:
   phoneid: test
