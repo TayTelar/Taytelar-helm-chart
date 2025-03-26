@@ -44,6 +44,8 @@ env:
     template: test
 
 thirdparty:
+  toll:
+    key: test
   razopay_api:
     id: test
     secret: test
@@ -62,8 +64,6 @@ thirdparty:
     url: test
     domain: test
   brevo:
-    key: test
-  toll:
     key: test
 
 whatsapp:
