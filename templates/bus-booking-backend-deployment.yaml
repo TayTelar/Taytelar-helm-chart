@@ -176,7 +176,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
-                  key: fuel-price-multiplier
+                  key: fuel-price
             - name: DISTANCE_CALCULATION_FACTOR
               valueFrom:
                 secretKeyRef:
