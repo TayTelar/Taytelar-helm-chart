@@ -172,3 +172,28 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: toll-api-key
+            - name: FUEL_PRICE_MULTIPLIER
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: fuel-price-multiplier
+            - name: DISTANCE_CALCULATION_FACTOR
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: distance-calculation-factor
+            - name: DISTANCE_CALCULATION_DEFAULT_KM
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: distance-calculation-default-km
+            - name: GST_AC_PERCENTAGE
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: gst-ac-percentage
+            - name: GST_NON_AC_PERCENTAGE
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: gst-non-ac-percentage

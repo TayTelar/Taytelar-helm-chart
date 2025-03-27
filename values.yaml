@@ -66,6 +66,22 @@ thirdparty:
   brevo:
     key: test
 
+fuel:
+  price:
+    multiplier: test
+
+distance:
+  calculation:
+    factor: test
+    defaultKm: test
+
+gst:
+  ac:
+    percentage: test
+  non:
+    ac:
+      percentage: test
+
 whatsapp:
   phoneid: test
   token: test
