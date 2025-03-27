@@ -46,7 +46,7 @@ env:
 thirdparty:
   toll:
     key: test
-  razopay_api:
+  razorpay_api:
     id: test
     secret: test
     x_account_number: test
@@ -57,6 +57,7 @@ thirdparty:
     key: test
     url: test
   mail:
+    address: test
     user: test
     password: test
   falcon:
