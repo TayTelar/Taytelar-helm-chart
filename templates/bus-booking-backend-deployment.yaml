@@ -25,13 +25,9 @@ spec:
           imagePullPolicy: {{ .Values.bus.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.bus.service.port }}
-
           env:
-            # Application Environment
             - name: SPRING_PROFILES_ACTIVE
               value: "dev"
-
-            # Database Configuration
             - name: SPRING_DATASOURCE_URL
               value: "jdbc:postgresql://{{ .Values.bus.postgres.name }}:{{ .Values.bus.postgres.port }}/{{ .Values.bus.postgres.dbname }}"
             - name: DB_USERNAME
@@ -39,13 +35,11 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: postgres-username
-            - name: DB_PASSWORD 
+            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
                   key: postgres-password
-
-            # AWS Configuration
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -63,8 +57,15 @@ spec:
                   key: nandhubus-bucket
             - name: AWS_REGION
               value: "{{ .Values.env.aws.region }}"
-
-            # SMTP Configuration
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: jwt-secret-key
+            - name: JWT_EXPIRATION
+              value: "3600000"
+            - name: REFRESH_TOKEN_EXPIRATION
+              value: "86400000"
             - name: SMTP_HOST
               valueFrom:
                 secretKeyRef:
@@ -80,8 +81,6 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: smtp-password
-
-            # IMAP Configuration
             - name: IMAP_HOST
               valueFrom:
                 secretKeyRef:
@@ -97,31 +96,6 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: imap-password
-
-            # JWT Configuration
-            - name: JWT_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secrets
-                  key: jwt-secret-key
-            - name: JWT_EXPIRATION
-              value: "3600000"
-            - name: REFRESH_TOKEN_EXPIRATION
-              value: "86400000"
-
-            # Fast2SMS API
-            - name: FAST2SMS_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secrets
-                  key: fast2sms-api-id
-            - name: FAST2SMS_URL
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secrets
-                  key: fast2sms-api-url
-
-            # Google Maps API
             - name: GOOGLE_MAPS_API_KEY
               valueFrom:
                 secretKeyRef:
@@ -132,8 +106,6 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: google-map-api-url
-
-            # Razorpay API
             - name: RAZORPAY_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -144,8 +116,16 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: razorpay-api-key-secret
-
-            # Additional Configurations
+            - name: FAST2SMS_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: fast2sms-api-id
+            - name: FAST2SMS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: fast2sms-api-url
             - name: BUS_IMAGE_URL
               valueFrom:
                 secretKeyRef:
@@ -156,7 +136,6 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: email-template
-            # Security Keys
             - name: CIPHER_SECRET_KEY
               valueFrom:
                 secretKeyRef:
