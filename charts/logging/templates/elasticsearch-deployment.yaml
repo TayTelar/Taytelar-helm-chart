@@ -26,3 +26,12 @@ spec:
         env:
         - name: discovery.type
           value: single-node
+        - name: xpack.security.enabled
+          value: "true"
+        - name: ELASTIC_USERNAME
+          value: "{{ .Values.elk.elasticsearch.auth.username }}"
+        - name: ELASTIC_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: "{{ .Values.elk.elasticsearch.auth.existingSecret }}"
+              key: elastic-password

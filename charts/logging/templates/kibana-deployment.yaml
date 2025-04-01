@@ -18,3 +18,13 @@ spec:
         image: {{ .Values.elk.kibana.image }}
         ports:
         - containerPort: {{ .Values.elk.kibana.containerPort }}
+        env:
+        - name: ELASTICSEARCH_HOSTS
+          value: "http://{{ .Values.elk.elasticsearch.name }}:9200"
+        - name: ELASTICSEARCH_USERNAME
+          value: "{{ .Values.elk.kibana.auth.username }}"
+        - name: ELASTICSEARCH_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: "{{ .Values.elk.kibana.auth.existingSecret }}"
+              key: elastic-password
