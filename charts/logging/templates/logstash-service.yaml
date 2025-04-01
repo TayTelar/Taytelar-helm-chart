@@ -10,3 +10,5 @@ spec:
     - protocol: {{ .Values.elk.logstash.protocol }}
       port: {{ .Values.elk.logstash.port }}
       targetPort: {{ .Values.elk.logstash.targetPort }}
+  type: {{ .Values.elk.logstash.type }}
+  nodePort: {{ .Values.elk.logstash.nodePort }}

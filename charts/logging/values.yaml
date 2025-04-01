@@ -43,6 +43,9 @@ elk:
     protocol: TCP
     port: 5044
     targetPort: 5044
+    nodePort: 31175
+    type: NodePort
+
 
   kibana:
     name: kibana

@@ -18,6 +18,12 @@ spec:
         image: docker.elastic.co/logstash/logstash:7.10.0
         ports:
         - containerPort: {{ .Values.elk.logstash.containerPort }}
+        env:
+        - name: ELASTIC_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: "{{ .Values.elk.kibana.auth.existingSecret }}"
+              key: elastic-password
         volumeMounts:
         - name: logstash-config
           mountPath: /usr/share/logstash/pipeline

@@ -26,6 +26,8 @@ data:
     output {
       elasticsearch {
         hosts => ["http://elasticsearch:9200"]
+        user => "elastic"
+        password => "${ELASTIC_PASSWORD}"
         index => "%{[@metadata][index]}-%{+YYYY.MM.dd}"
       }
     }
