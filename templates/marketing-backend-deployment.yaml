@@ -132,3 +132,9 @@ spec:
                   name: backend-secrets
                   key: brevo_key
 
+            - name: INITIAL_USER_MAIL
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: initialUser
+
