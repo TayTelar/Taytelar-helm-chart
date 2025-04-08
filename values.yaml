@@ -116,6 +116,9 @@ database:
     enabled: true
     storage:
       size: 1Gi
+    storagesize: "10Gi"
+    accessmode: "ReadWriteOnce"
+    storageclass: "ebs-csi"
 
   mongodb:
     name: mongo-service
