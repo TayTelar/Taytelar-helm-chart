@@ -83,6 +83,10 @@ gst:
     ac:
       percentage: test
 
+platform:
+  fees: test
+  gst: test
+
 whatsapp:
   phoneid: test
   token: test

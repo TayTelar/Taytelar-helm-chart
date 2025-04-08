@@ -176,3 +176,13 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: gst-non-ac-percentage
+            - name: PLATFORM_FEES
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: platform-fees
+            - name: PLATFORM_GST
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: platform-gst
