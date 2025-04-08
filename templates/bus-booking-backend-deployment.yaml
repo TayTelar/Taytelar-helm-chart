@@ -186,3 +186,63 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: platform-gst
+            - name: ACCOUNT_HOLDER_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: acctHolderName
+            - name: BANK_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: bankName
+            - name: ACCOUNT_NUMBER
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: bankAcctNumber
+            - name: IFSC_CODE
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: ifscCode
+            - name: ACCOUNT_TYPE
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: accountType
+            - name: UPI_ID
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: upiID
+            - name: COMPANY_PAN
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: companyPAN
+            - name: COMPANY_CIN
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: companyCIN
+            - name: COMPANY_ADDRESS
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: company-address
+            - name: CENTRAL_GST_RATE
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: cgst-rate
+            - name: STATE_GST_RATE
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: sgst-rate
+            - name: PAYMENT_SCANNER
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: pay-scanner-url          

@@ -87,6 +87,26 @@ platform:
   fees: test
   gst: test
 
+bankDetails:
+  acctHolderName: test
+  bankName: test
+  bankAcctNumber: test
+  ifscCode: test
+  accountType: test
+  upiID: test
+  companyPAN: test
+  companyCIN: test
+
+company:
+  address: test
+
+amountDetails:
+  cGstRate: test
+  sGstRate: test
+
+paymentScanner:
+  url: test
+
 whatsapp:
   phoneid: test
   token: test
