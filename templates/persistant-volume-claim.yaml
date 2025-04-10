@@ -2,10 +2,12 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: postgres-pvc
+  namespace: taytelar-ns
 spec:
-  storageClassName: ebs-sc
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
+  storageClassName: manual
+  volumeName: postgres-pv
