@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pvc-tester
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pvc-tester
+  template:
+    metadata:
+      labels:
+        app: pvc-tester
+    spec:
+      containers:
+        - name: pvc-tester
+          image: busybox
+          command: ["sleep", "3600"]
+          volumeMounts:
+            - name: postgres-volume
+              mountPath: /mnt/test
+      volumes:
+        - name: postgres-volume
+          persistentVolumeClaim:
+            claimName: postgres-pvc
