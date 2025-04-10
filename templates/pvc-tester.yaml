@@ -12,8 +12,6 @@ spec:
       labels:
         app: pvc-tester
     spec:
-      nodeSelector:
-          topology.kubernetes.io/zone: ap-south-1a
       containers:
         - name: pvc-tester
           image: busybox
