@@ -12,6 +12,8 @@ spec:
       labels:
         app: pvc-tester
     spec:
+      nodeSelector:
+          zone: ap-south-1a
       containers:
         - name: pvc-tester
           image: busybox
