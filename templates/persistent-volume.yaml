@@ -12,5 +12,7 @@ spec:
   storageClassName: manual
   csi:
     driver: ebs.csi.aws.com
-    volumeHandle: vol-0f635406946330d67  
+    volumeHandle: vol-0f635406946330d67
     fsType: ext4
+    volumeAttributes:
+      availabilityZone: ap-south-1a
