@@ -4,7 +4,7 @@ metadata:
   name: postgres-pvc
   namespace: taytelar-ns
 spec:
-  storageClassName: gp2
+  storageClassName: ebs-sc
   accessModes:
     - ReadWriteOnce
   resources:
