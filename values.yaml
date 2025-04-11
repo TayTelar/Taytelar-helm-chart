@@ -112,6 +112,16 @@ whatsapp:
   token: test
   webhooktoken: test
 
+#bus
+whatsapp:
+  api:
+    baseApiUrl: test
+    whatsapp-phone-id: test
+    token: test
+webhook:
+  verify:
+    token: test
+
   #marketing
 imap:
   host: test

@@ -245,4 +245,19 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
-                  key: pay-scanner-url          
+                  key: pay-scanner-url      
+            - name: WHATSAPP_PHONE_ID
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: bus-whatsapp-ph-id
+            - name: WHATSAPP_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: bus-whatsapp-token
+            - name: WHATSAPP_WEBHOOK_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: bus-whatsapp-webhook-token        
