@@ -115,7 +115,7 @@ whatsapp:
   #bus
   api:
     baseApiUrl: test
-    whatsapp-phone-id: test
+    whatsappphoneid: test
     token: test
 webhook:
   verify:
