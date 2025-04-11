@@ -1,13 +1,13 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: postgres-pvc
-  namespace: taytelar-ns
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: manual
-  volumeName: postgres-pv
-  resources:
-    requests:
-      storage: 10Gi
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  name: postgres-pvc
+#  namespace: taytelar-ns
+#spec:
+#  accessModes:
+#    - ReadWriteOnce
+#  storageClassName: manual
+ # volumeName: postgres-pv
+ # resources:
+ #   requests:
+ #     storage: 10Gi
