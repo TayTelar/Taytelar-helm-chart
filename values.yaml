@@ -112,8 +112,7 @@ whatsapp:
   token: test
   webhooktoken: test
 
-#bus
-whatsapp:
+  #bus
   api:
     baseApiUrl: test
     whatsapp-phone-id: test
