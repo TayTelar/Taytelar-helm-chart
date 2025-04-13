@@ -1,0 +1,27 @@
+# pvc-test-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pvc-tester
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pvc-tester
+  template:
+    metadata:
+      labels:
+        app: pvc-tester
+    spec:
+      containers:
+        - name: alpine
+          image: alpine
+          command: ["/bin/sh"]
+          args: ["-c", "sleep 3600"]
+          volumeMounts:
+            - name: test-storage
+              mountPath: /mnt/test
+      volumes:
+        - name: test-storage
+          persistentVolumeClaim:
+            claimName: pvc-tester
