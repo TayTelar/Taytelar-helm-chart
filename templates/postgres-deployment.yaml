@@ -15,6 +15,8 @@ spec:
       containers:
       - name: "{{ .Values.database.postgres.name }}"
         image: "{{ .Values.database.postgres.image }}"
+        ports:
+        - containerPort: 5432
         env:
         - name: POSTGRES_DB
           value: "{{ .Values.database.postgres.dbname }}"
@@ -22,13 +24,10 @@ spec:
           value: "{{ .Values.database.postgres.username }}"
         - name: POSTGRES_PASSWORD
           value: "{{ .Values.database.postgres.password }}"
-        ports:
-        - containerPort: 5432
-      #   volumeMounts:
-      #   - name: init-script
-      #     mountPath: /docker-entrypoint-initdb.d/init-db.sql
-      #     subPath: init-db.sql
-      # volumes:
-      # - name: init-script
-      #   configMap:
-      #     name: postgres-init-script
+      volumeMounts:
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
+  volumes:
+    - name: postgres-storage
+      persistentVolumeClaim:
+        claimName: postgres-pvc
