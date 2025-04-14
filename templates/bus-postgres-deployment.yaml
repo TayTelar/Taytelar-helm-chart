@@ -32,10 +32,10 @@ spec:
           preStop:
             exec:
               command: [ "sh", "-c", "psql -U $POSTGRES_USER -d $POSTGRES_DB -c \"SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE state = 'idle' AND now() - query_start > interval '10 minutes';\"" ]
-        volumeMounts:
-          - name: postgres-storage
-            mountPath: "{{ .Values.bus.postgres.datapath}}"
-      volumes:
-        - name: postgres-storage
-          persistentVolumeClaim:
-            claimName: postgres-pvc
+#        volumeMounts:
+#          - name: postgres-storage
+#            mountPath: "{{ .Values.bus.postgres.datapath}}"
+#      volumes:
+#        - name: postgres-storage
+#          persistentVolumeClaim:
+#            claimName: postgres-pvc
