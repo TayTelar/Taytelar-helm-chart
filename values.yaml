@@ -256,7 +256,7 @@ bus:
     enabled: true
     storage:
       size: 1Gi
-    datapath: /var/lib/postgresql/data/postgresql_data
+    datapath: /var/lib/postgresql/data
   
 
 nandhubus:
