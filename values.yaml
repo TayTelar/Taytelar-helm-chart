@@ -274,5 +274,5 @@ nandhubus:
 
 initialUser: test
 message91:
-  auth-key: test
-  template-id: test
+  authKey: test
+  templateId: test
