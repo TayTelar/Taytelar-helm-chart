@@ -273,3 +273,6 @@ nandhubus:
       targetPort: 3000
 
 initialUser: test
+message91:
+  auth-key: test
+  template-id: test
