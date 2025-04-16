@@ -260,4 +260,14 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: backend-secrets
-                  key: bus-whatsapp-webhook-token        
+                  key: bus-whatsapp-webhook-token  
+            - name: MESSAGE91_AUTH_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: message91-auth
+            - name: MESSAGE91_TEMPLATE_ID
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: message91-template
