@@ -40,6 +40,16 @@ spec:
                 secretKeyRef:
                   name: backend-secrets
                   key: postgres-password
+            # Redis
+            - name: REDIS_HOST
+              value: "bus-redis"
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: redis-password
+            - name: REDIS_PORT
+              value: "{{ .Values.database.redis.port }}"
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
